@@ -1,4 +1,5 @@
 package com.example.moyeit.moyeitapp.Service;
+import retrofit2.http.*;
 
 /**
  * Created by alice on 2017-07-21.

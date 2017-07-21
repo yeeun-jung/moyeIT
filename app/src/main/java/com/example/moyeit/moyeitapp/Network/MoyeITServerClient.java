@@ -2,6 +2,11 @@ package com.example.moyeit.moyeitapp.Network;
 
 import android.content.Context;
 
+import com.example.moyeit.moyeitapp.Service.MoyeITServerService;
+
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 /**
  * Created by alice on 2017-07-21.
  */
