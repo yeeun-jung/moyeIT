@@ -47,6 +47,8 @@ public class LoginActivity extends Activity {
         moyeClient = new MoyeITServerClient(getApplicationContext());
         moyeService = moyeClient.getMoyeITService();
 
+        userDto= UserDto.getInstance();
+
 
 
 
@@ -77,10 +79,24 @@ public class LoginActivity extends Activity {
                             Toast.makeText(LoginActivity.this, "없는 계정입니다.", Toast.LENGTH_SHORT).show();
 
                         }else if (response.body().getPwd().equals(editPwdValue)) {
+                            userDto.setEmail(response.body().getEmail());
+                            userDto.setEnjoy(response.body().getEnjoy());
+                            userDto.setNickname(response.body().getNickname());
+                            userDto.setPid(response.body().getPid());
+                            userDto.setRegion(response.body().getRegion());
                             Toast.makeText(LoginActivity.this, response.body().getNickname()+"님, 안녕하세요.", Toast.LENGTH_SHORT).show();
+
+                            Intent intent =new Intent(getApplicationContext(),SampleActivity.class);
+                            startActivity(intent);
                         }else if(!response.body().getPwd().equals(editPwdValue)){
                             Toast.makeText(LoginActivity.this, "아이디와 비밀번호를 확인해주세요.", Toast.LENGTH_SHORT).show();
+                            userDto.setRegion(0);
+                            userDto.setPid(0);
+                            userDto.setEnjoy("");
+                            userDto.setEmail("");
+                            userDto.setNickname("");
                         }
+
 
                     }
 
@@ -92,6 +108,7 @@ public class LoginActivity extends Activity {
 
         });
                 }
+
     }
         });
 

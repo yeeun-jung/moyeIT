@@ -5,19 +5,23 @@ package com.example.moyeit.moyeitapp.dto;
  */
 
 public class UserDto {
+    private static UserDto userDto= new UserDto();
+    public static UserDto getInstance(){
+        return userDto;
+    }
 
-    String pid;
+    int pid;
     String email;
     String nickname;
     String  pwd;
     int region;
     String enjoy;
 
-    public String getPid() {
+    public int getPid() {
         return pid;
     }
 
-    public void setPid(String pid) {
+    public void setPid(int pid) {
         this.pid = pid;
     }
 
