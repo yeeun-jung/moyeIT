@@ -1,4 +1,5 @@
 package com.example.moyeit.moyeitapp.Service;
+import com.example.moyeit.moyeitapp.dto.StudyDto;
 import com.example.moyeit.moyeitapp.dto.UserDto;
 
 import retrofit2.Call;
@@ -14,6 +15,12 @@ public interface MoyeITServerService {
     @FormUrlEncoded
     @POST("user/login.php")
     Call<UserDto> login(@Field("email") String id);
+
+
+    @POST("study/register.php")
+    Call<StudyDto> studyRegi(@Body StudyDto study);
+
+
 
 
 }
