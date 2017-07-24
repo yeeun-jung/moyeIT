@@ -21,7 +21,7 @@ public class SampleActivity extends Activity{
         userDto=UserDto.getInstance();
         textView=(TextView)findViewById(R.id.sampleText);
 
-        textView.setText("lalalaall"+userDto.getRegion());
+        textView.setText(userDto.getEmail());
 
 
 
