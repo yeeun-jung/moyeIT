@@ -1,33 +1,44 @@
 package com.example.moyeit.moyeitapp.dto;
 
 /**
- * Created by yeeun on 2017-07-27.
+ * Created by yeeun on 2017-07-26.
  */
 
-public class StudyDto {
-    String nickname;
+public class MystudyDto {
+    int pid;
     String title;
-    int region;
-    int limitnum;
+    String nick;
+    int cont;
+    int limit;
     String detail;
     int sid;
 
-    public String getState() {
-        return state;
+    public int getCont() {
+        return cont;
     }
 
-    public void setState(String state) {
-        this.state = state;
+    public void setCont(int cont) {
+        this.cont = cont;
     }
 
-    String state;
-
-    public String getNickname() {
-        return nickname;
+    public String getNick() {
+        return nick;
     }
 
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
+    public void setNick(String nick) {
+        this.nick = nick;
+    }
+
+
+
+
+
+    public int getPid() {
+        return pid;
+    }
+
+    public void setPid(int pid) {
+        this.pid = pid;
     }
 
     public String getTitle() {
@@ -38,20 +49,13 @@ public class StudyDto {
         this.title = title;
     }
 
-    public int getRegion() {
-        return region;
-    }
-
-    public void setRegion(int region) {
-        this.region = region;
-    }
 
     public int getLimit() {
-        return limitnum;
+        return limit;
     }
 
     public void setLimit(int limit) {
-        this.limitnum = limit;
+        this.limit = limit;
     }
 
     public String getDetail() {

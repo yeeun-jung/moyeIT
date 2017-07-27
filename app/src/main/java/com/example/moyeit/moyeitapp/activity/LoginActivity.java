@@ -61,21 +61,24 @@ public class LoginActivity extends Activity {
                 editIDValue = editId.getText().toString();
                 editPwdValue = editPwd.getText().toString();
 
-                if(editIDValue.equals("")){
+                if (editIDValue.equals("")) {
                     Toast.makeText(LoginActivity.this, "아이디를 입력해주세요.", Toast.LENGTH_SHORT).show();
                     return;
-                }else if(editPwdValue.equals("")){
+                } else if (editPwdValue.equals("")) {
                     Toast.makeText(LoginActivity.this, "비밀번호를 입력해주세요.", Toast.LENGTH_SHORT).show();
                     return;
-                }else{
-                Call<UserDto> callUserInfo = moyeService.login(editIDValue);
+                } else {
+                    Call<UserDto> callUserInfo = moyeService.login(editIDValue);
 
-                callUserInfo.enqueue(new Callback<UserDto>() {
-                    @Override
-                    public void onResponse(Call<UserDto> call, Response<UserDto> response) {
+                    callUserInfo.enqueue(new Callback<UserDto>() {
+                        @Override
+                        public void onResponse(Call<UserDto> call, Response<UserDto> response) {
 
-                        textInform.setText(response.body().getEmail());
-                        if(response.body().getEmail().equals("")){
+                       //       textInform.setText(response.body().getEmail());
+                            if (response.body().getState().equals("fail")) {
+                                Toast.makeText(LoginActivity.this, response.body().getState().toString()+"서버에 문제가 생겼습니다. 관리자에게 문의하세요.", Toast.LENGTH_SHORT).show();
+                            }
+                         else if(response.body().getEmail().equals("")){
                             Toast.makeText(LoginActivity.this, "없는 계정입니다.", Toast.LENGTH_SHORT).show();
 
                         }else if (response.body().getPwd().equals(editPwdValue)) {
@@ -98,23 +101,24 @@ public class LoginActivity extends Activity {
                         }
 
 
-                    }
+                        }
+
+                        @Override
+                        public void onFailure(Call<UserDto> call, Throwable t) {
+                            textInform.setText("실패" + t.toString());
+                        }
+                    });
 
 
-                    @Override
-                    public void onFailure(Call<UserDto> call, Throwable t) {
-                        textInform.setText("실패"+t.toString());
-                    }
-
-        });
                 }
-
-    }
-        });
-
-
+            }
+            });
+        }
     }
 
 
 
-}
+
+
+
+

@@ -10,8 +10,12 @@ import android.widget.TextView;
 import com.example.moyeit.moyeitapp.Network.MoyeITServerClient;
 import com.example.moyeit.moyeitapp.R;
 import com.example.moyeit.moyeitapp.Service.MoyeITServerService;
+import com.example.moyeit.moyeitapp.dto.MystudyDto;
+import com.example.moyeit.moyeitapp.dto.Study;
 import com.example.moyeit.moyeitapp.dto.StudyDto;
 import com.example.moyeit.moyeitapp.dto.UserDto;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -55,7 +59,13 @@ public class SampleActivity extends Activity{
             public void onClick(View view) {
 
                 study.setDetail(editDetail.getText().toString());
-                final Call<StudyDto> studyDtocall= moyeService.studyRegi(study);
+                study.setLimit(Integer.parseInt(editLimit.getText().toString()));
+                study.setTitle(editTitle.getText().toString());
+                study.setDetail(editDetail.getText().toString());
+                study.setRegion(Integer.parseInt(editRegion.getText().toString()));
+                study.setNickname(userDto.getNickname());
+                 Call<StudyDto> studyDtocall= moyeService.studyRegi(study.getNickname(),study.getTitle(),study.getRegion(),study.getLimit(),study.getDetail());
+            //    textView.setText(study.toString());
                 studyDtocall.enqueue(new Callback<StudyDto>() {
                     @Override
                     public void onResponse(Call<StudyDto> call, Response<StudyDto> response) {
@@ -65,7 +75,7 @@ public class SampleActivity extends Activity{
 
                     @Override
                     public void onFailure(Call<StudyDto> call, Throwable t) {
-
+                        textView.setText("실패" + t.toString());
                     }
                 });
             }

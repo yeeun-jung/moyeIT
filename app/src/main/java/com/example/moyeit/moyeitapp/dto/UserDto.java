@@ -16,10 +16,15 @@ public class UserDto {
     String  pwd;
     int region;
     String enjoy;
+    String state;
+
+    public void setState(String state) {this.state= state;}
 
     public int getPid() {
         return pid;
     }
+
+    public String getState(){return state;}
 
     public void setPid(int pid) {
         this.pid = pid;
