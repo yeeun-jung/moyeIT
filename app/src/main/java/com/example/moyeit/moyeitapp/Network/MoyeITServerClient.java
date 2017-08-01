@@ -32,12 +32,10 @@ public class MoyeITServerClient implements MoyeITClient{
                 .build();
 
         apiService = retrofit.create(MoyeITServerService.class);
-
     }
 
     @Override
     public MoyeITServerService getMoyeITService() {
         return apiService;
     }
-
 }

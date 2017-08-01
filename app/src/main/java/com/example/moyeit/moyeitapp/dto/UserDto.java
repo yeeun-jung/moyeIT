@@ -5,17 +5,27 @@ package com.example.moyeit.moyeitapp.dto;
  */
 
 public class UserDto {
-    private static UserDto userDto= new UserDto();
-    public static UserDto getInstance(){
+    private static UserDto userDto = new UserDto();
+
+    public static UserDto getInstance() {
         return userDto;
     }
 
     int pid;
     String email;
     String nickname;
-    String  pwd;
+    String pwd;
     int region;
     String enjoy;
+    String state;
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
 
     public int getPid() {
         return pid;

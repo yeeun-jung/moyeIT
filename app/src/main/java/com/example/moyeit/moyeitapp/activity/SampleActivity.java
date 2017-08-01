@@ -22,8 +22,5 @@ public class SampleActivity extends Activity{
         textView=(TextView)findViewById(R.id.sampleText);
 
         textView.setText(userDto.getEmail());
-
-
-
     }
 }
