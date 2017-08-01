@@ -86,7 +86,7 @@ public class LoginActivity extends Activity {
                             userDto.setRegion(response.body().getRegion());
                             Toast.makeText(LoginActivity.this, response.body().getNickname()+"님, 안녕하세요.", Toast.LENGTH_SHORT).show();
 
-                            Intent intent =new Intent(getApplicationContext(),SampleActivity.class);
+                            Intent intent =new Intent(getApplicationContext(),MsMainActivity.class);
                             startActivity(intent);
                         }else if(!response.body().getPwd().equals(editPwdValue)){
                             Toast.makeText(LoginActivity.this, "아이디와 비밀번호를 확인해주세요.", Toast.LENGTH_SHORT).show();
