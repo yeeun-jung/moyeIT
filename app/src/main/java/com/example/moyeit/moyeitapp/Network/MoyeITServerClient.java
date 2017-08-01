@@ -39,5 +39,4 @@ public class MoyeITServerClient implements MoyeITClient{
     public MoyeITServerService getMoyeITService() {
         return apiService;
     }
-
 }

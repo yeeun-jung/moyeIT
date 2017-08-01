@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <TextView
+        android:id="@+id/text_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.13"
+        android:text="제목" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="39dp"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <TextView
+            android:id="@+id/text_user"
+            android:layout_width="73dp"
+            android:layout_height="38dp"
+            android:layout_weight="0.04"
+            android:text="글쓴이" />
+
+        <TextView
+            android:id="@+id/text_date"
+            android:layout_width="73dp"
+            android:layout_height="38dp"
+            android:text="날짜" />
+
+    </LinearLayout>
+
+    <!--<TextView
+        android:id="@+id/text_inform"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.13"
+        android:text="TextView" />-->
+
+    <TextView
+        android:id="@+id/text_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.38"
+        android:text="내용" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_agree"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:text="찬성" />
+
+        <Button
+            android:id="@+id/btn_disagree"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:text="반대" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/text_comment"
+        android:layout_width="match_parent"
+        android:layout_height="196dp"
+        android:text="TextView" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="39dp"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+    <EditText
+        android:id="@+id/edit_comment"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text" />
+
+    <Button
+        android:id="@+id/btn_addcomment"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:text="등록" />
+
+        </LinearLayout>
+
+    <TextView
+        android:id="@+id/text_inform"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.13"
+        android:text="TextView" />
+
+</LinearLayout>
