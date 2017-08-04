@@ -4,99 +4,100 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Layout;
-import android.util.Log;
+import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.moyeit.moyeitapp.Network.MoyeITServerClient;
 import com.example.moyeit.moyeitapp.R;
-import com.example.moyeit.moyeitapp.dto.ListDto;
-import com.example.moyeit.moyeitapp.dto.MyStudyDto;
 import com.example.moyeit.moyeitapp.Service.MoyeITServerService;
 import com.example.moyeit.moyeitapp.dto.MyStudyDto;
+import com.example.moyeit.moyeitapp.dto.SrListDetailDto;
+import com.example.moyeit.moyeitapp.dto.SrListDto;
 import com.example.moyeit.moyeitapp.dto.UserDto;
 
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 /**
- * Created by ga0 on 2017-07-24.
+ * Created by ga0 on 2017-08-03.
  */
 
+public class SrListActivity extends Activity{
 
-public class MsMainActivity extends Activity {
-    TextView nickName;
-    ListView mstudyList;
-    ArrayList<MyStudyDto> list;
     public MoyeITServerClient moyeClient;
     public MoyeITServerService moyeService;
-    ListViewAdapter adapter;
     UserDto userDto;
+    SrListViewAdapter adapter;
+    ListView list;
+    EditText searchText;
+    Button searchBtn;
     String sid;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.mystudy_main);
+        setContentView(R.layout.sr_list);
 
         moyeClient = new MoyeITServerClient(getApplicationContext());
         moyeService = moyeClient.getMoyeITService();
 
-        nickName = (TextView)findViewById(R.id.u_name);
-        mstudyList = (ListView)findViewById(R.id.u_list);
+        list = (ListView)findViewById(R.id.s_srList);
+        searchText = (EditText)findViewById(R.id.s_searchText);
+        searchBtn = (Button)findViewById(R.id.s_searchBtn);
 
-        Call<ListDto> myStudyList = moyeService.myStudyList(userDto.getInstance().getPid());
-        nickName.setText(String.valueOf(userDto.getInstance().getNickname()));
-        myStudyList.enqueue(new Callback<ListDto>() {
+        userDto = UserDto.getInstance();
+        String pid = String.valueOf(userDto.getPid());
+        Call<SrListDto> srList = moyeService.srList("",pid);
+        srList.enqueue(new Callback<SrListDto>() {
             @Override
-            public void onResponse(Call<ListDto> call, Response<ListDto> response) {
-                list = response.body().getList();
-                adapter = new ListViewAdapter(MsMainActivity.this, R.layout.simple_list_item_4, list);
-                mstudyList.setAdapter(adapter);
+            public void onResponse(Call<SrListDto> call, Response<SrListDto> response) {
+                ArrayList<SrListDetailDto> detailList = response.body().getList();
+                adapter = new SrListViewAdapter(SrListActivity.this, R.layout.simple_list_item_4, detailList);
+                list.setAdapter(adapter);
+
             }
 
             @Override
-            public void onFailure(Call<ListDto> call, Throwable t) {
+            public void onFailure(Call<SrListDto> call, Throwable t) {
 
             }
         });
 
-        mstudyList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 TextView sidText = (TextView)view.findViewById(R.id.sid);
                 sid= (String)sidText.getText();
-                Intent intent = new Intent(getApplicationContext(),MsDetailActivity.class);
+                Intent intent = new Intent(getApplicationContext(),SampleActivity.class);
                 intent.putExtra("sid", sid);
                 startActivity(intent);
-
             }
         });
 
-   }
+    }
 }
 
-class ListViewAdapter extends BaseAdapter {
+
+
+class SrListViewAdapter extends BaseAdapter {
     Context maincon;
     LayoutInflater Inflater;
-    ArrayList<MyStudyDto> src;
+    ArrayList<SrListDetailDto> src;
     int layout;
 
-    public ListViewAdapter(Context context, int alayout, ArrayList<MyStudyDto> asrc) {
+    public SrListViewAdapter(Context context, int alayout, ArrayList<SrListDetailDto> asrc) {
         maincon = context;
         Inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         src = asrc;

@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TabHost;
@@ -38,14 +39,14 @@ import retrofit2.Response;
 public class MsDetailActivity extends Activity {
     public MoyeITServerClient moyeClient;
     public MoyeITServerService moyeService;
-    TextView detail_region;
     TextView detail_title;
     TextView detail_nickname;
     TextView detail_conlimitnum;
-    GlobalMethod global;
     ListView detail_list;
     msDetailListViewAdapter adapter;
     ArrayList<MsDetailListDto> list;
+    int sid;
+    String no;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -55,14 +56,13 @@ public class MsDetailActivity extends Activity {
         moyeClient = new MoyeITServerClient(getApplicationContext());
         moyeService = moyeClient.getMoyeITService();
 
-        detail_region = (TextView)findViewById(R.id.detail_region);
         detail_title = (TextView)findViewById(R.id.detail_title);
         detail_nickname = (TextView)findViewById(R.id.detail_nickname);
         detail_conlimitnum = (TextView)findViewById(R.id.detail_conlimitnum);
         detail_list = (ListView)findViewById(R.id.detail_list);
 
         Intent intent = getIntent();
-        int sid = Integer.parseInt(intent.getExtras().getString("sid"));
+        sid = Integer.parseInt(intent.getExtras().getString("sid"));
 
         TabHost tabHost=(TabHost)findViewById(R.id.tabhost);
         tabHost.setup();
@@ -83,7 +83,6 @@ public class MsDetailActivity extends Activity {
             @Override
             public void onResponse(Call<MsDetailDto> call, Response<MsDetailDto> response) {
                 list = response.body().getList();
-                detail_region.setText(String.valueOf("<"+global.toRegion(response.body().getRegion())+">"));
                 detail_title.setText(response.body().getTitle());
                 detail_nickname.setText(response.body().getNickname());
                 detail_conlimitnum.setText(response.body().getContnum()+"/"+response.body().getLimitnum());
@@ -94,6 +93,19 @@ public class MsDetailActivity extends Activity {
             @Override
             public void onFailure(Call<MsDetailDto> call, Throwable t) {
                 Log.i("실패","실패.........");
+            }
+        });
+
+        detail_list.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                TextView no_Text = (TextView)view.findViewById(R.id.ms_detail_no);
+                no = no_Text.getText().toString();
+                Intent intent = new Intent(getApplicationContext(),SampleActivity.class);
+                // 연주가 만든 액티비티 이름으로 바꾸고 돌리기(테스트는 끝남 no랑 sid 넘겨주는 테스트는 끝남)
+                intent.putExtra("sid", String.valueOf(sid));
+                intent.putExtra("no",no);
+                startActivity(intent);
             }
         });
     }
@@ -136,9 +148,11 @@ class msDetailListViewAdapter extends BaseAdapter {
         }
 
         TextView no = (TextView)convertView.findViewById(R.id.ms_detail_no);
-        no.setText(String.valueOf(position+1));
+        no.setText(src.get(position).getNo());
         TextView title = (TextView)convertView.findViewById(R.id.ms_detail_title);
         title.setText(src.get(position).getMoimtitle());
+        TextView num = (TextView)convertView.findViewById(R.id.ms_detail_num);
+        num.setText(String.valueOf(src.get(position).getAgrnum())+"/"+String.valueOf(src.get(position).getLimitnum()));
         TextView user = (TextView)convertView.findViewById(R.id.ms_detail_user);
         user.setText(src.get(position).getMuser());
         TextView date = (TextView)convertView.findViewById(R.id.ms_detail_date);

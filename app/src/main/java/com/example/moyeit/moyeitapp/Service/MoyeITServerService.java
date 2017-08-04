@@ -2,6 +2,7 @@ package com.example.moyeit.moyeitapp.Service;
 import com.example.moyeit.moyeitapp.dto.ListDto;
 import com.example.moyeit.moyeitapp.dto.MsDetailDto;
 import com.example.moyeit.moyeitapp.dto.MyStudyDto;
+import com.example.moyeit.moyeitapp.dto.SrListDto;
 import com.example.moyeit.moyeitapp.dto.UserDto;
 
 import java.util.ArrayList;
@@ -26,6 +27,9 @@ public interface MoyeITServerService {
 
     @GET("mystudy/moimlist.php")
     Call<MsDetailDto> msMoimList(@Query("sid") int id);
+
+    @GET("study/list/search.php")
+    Call<SrListDto> srList(@Query("search") String search, @Query("pid") String id);
 
 
 }

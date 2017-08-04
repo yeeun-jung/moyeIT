@@ -1,33 +1,23 @@
 package com.example.moyeit.moyeitapp.dto;
 
-import java.util.ArrayList;
-
 /**
- * Created by ga0 on 2017-07-27.
+ * Created by ga0 on 2017-08-03.
  */
 
-public class MsDetailDto {
-    String state;
-    String title;
+public class SrListDetailDto {
+    int sid;
     String nickname;
+    String title;
     int limitnum;
     int contnum;
-    ArrayList<MsDetailListDto> list;
+    String join;
 
-    public String getState() {
-        return state;
+    public int getSid() {
+        return sid;
     }
 
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
+    public void setSid(int sid) {
+        this.sid = sid;
     }
 
     public String getNickname() {
@@ -36,6 +26,14 @@ public class MsDetailDto {
 
     public void setNickname(String nickname) {
         this.nickname = nickname;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public int getLimitnum() {
@@ -54,13 +52,11 @@ public class MsDetailDto {
         this.contnum = contnum;
     }
 
-
-
-    public ArrayList<MsDetailListDto> getList() {
-        return list;
+    public String getJoin() {
+        return join;
     }
 
-    public void setList(ArrayList<MsDetailListDto> list) {
-        this.list = list;
+    public void setJoin(String join) {
+        this.join = join;
     }
 }

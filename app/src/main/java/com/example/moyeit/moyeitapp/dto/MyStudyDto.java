@@ -10,7 +10,6 @@ public class MyStudyDto {
     String nickname;
     int limitnum;
     int contnum;
-    String region;
     int sid;
 
 
@@ -34,9 +33,6 @@ public class MyStudyDto {
         this.contnum = contnum;
     }
 
-    public void setRegion(String region) {
-        this.region = region;
-    }
 
     public void setSid(int sid) {
         this.sid = sid;
@@ -57,10 +53,6 @@ public class MyStudyDto {
 
     public int getContnum() {
         return contnum;
-    }
-
-    public String getRegion() {
-        return region;
     }
 
     public int getSid() {

@@ -6,12 +6,21 @@ package com.example.moyeit.moyeitapp.dto;
 
 public class MsDetailListDto {
     String moimtitle;
-    int liminum;
-    int argnum;
+    int limitnum;
+    int agrnum;
     int disnum;
     String date;
     String muser;
     int mid;
+    String no;
+
+    public String getNo() {
+        return no;
+    }
+
+    public void setNo(String no) {
+        this.no = no;
+    }
 
     public String getMoimtitle() {
         return moimtitle;
@@ -21,20 +30,20 @@ public class MsDetailListDto {
         this.moimtitle = moimtitle;
     }
 
-    public int getLiminum() {
-        return liminum;
+    public int getLimitnum() {
+        return limitnum;
     }
 
-    public void setLiminum(int liminum) {
-        this.liminum = liminum;
+    public void setLimitnum(int limitnum) {
+        this.limitnum = limitnum;
     }
 
-    public int getArgnum() {
-        return argnum;
+    public int getAgrnum() {
+        return agrnum;
     }
 
-    public void setArgnum(int argnum) {
-        this.argnum = argnum;
+    public void setAgrnum(int agrnum) {
+        this.agrnum = agrnum;
     }
 
     public int getDisnum() {
