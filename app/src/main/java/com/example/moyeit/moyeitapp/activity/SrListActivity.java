@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.example.moyeit.moyeitapp.Network.MoyeITServerClient;
 import com.example.moyeit.moyeitapp.R;
 import com.example.moyeit.moyeitapp.Service.MoyeITServerService;
+import com.example.moyeit.moyeitapp.dto.MsDetailListDto;
 import com.example.moyeit.moyeitapp.dto.MyStudyDto;
 import com.example.moyeit.moyeitapp.dto.SrListDetailDto;
 import com.example.moyeit.moyeitapp.dto.SrListDto;
@@ -45,6 +46,7 @@ public class SrListActivity extends Activity{
     EditText searchText;
     Button searchBtn;
     String sid;
+    String join;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +61,7 @@ public class SrListActivity extends Activity{
 
         userDto = UserDto.getInstance();
         String pid = String.valueOf(userDto.getPid());
+
         Call<SrListDto> srList = moyeService.srList("",pid);
         srList.enqueue(new Callback<SrListDto>() {
             @Override
@@ -79,10 +82,22 @@ public class SrListActivity extends Activity{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 TextView sidText = (TextView)view.findViewById(R.id.sid);
+                TextView joinText = (TextView)view.findViewById(R.id.join);
                 sid= (String)sidText.getText();
-                Intent intent = new Intent(getApplicationContext(),SampleActivity.class);
-                intent.putExtra("sid", sid);
-                startActivity(intent);
+                join = (String)joinText.getText();
+
+                if(join.equals("true")){
+                    Intent intent = new Intent(getApplicationContext(),MsDetailListDto.class);
+                    intent.putExtra("sid", sid);
+                    startActivity(intent);
+
+                }
+                else{
+                    Intent intent = new Intent(getApplicationContext(),SampleActivity.class);
+                    intent.putExtra("sid", sid);
+                    startActivity(intent);}
+
+
             }
         });
 
@@ -134,6 +149,8 @@ class SrListViewAdapter extends BaseAdapter {
         contnum.setText(String.valueOf(src.get(position).getContnum()) + "/" + String.valueOf(src.get(position).getLimitnum()));
         TextView sid = (TextView) convertView.findViewById(R.id.sid);
         sid.setText(String.valueOf(src.get(position).getSid()));
+        TextView join = (TextView) convertView.findViewById(R.id.join);
+        join.setText(src.get(position).getJoin());
 
         return convertView;
     }

@@ -31,7 +31,15 @@
         android:layout_height="match_parent"
         android:id="@+id/sid"
         android:layout_weight="0"
-        android:visibility="invisible"
+        android:visibility="gone"
+        />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:id="@+id/join"
+        android:layout_weight="0"
+        android:visibility="gone"
         />
 
 </LinearLayout>
