@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.example.moyeit.moyeitapp.activity.RegisterActivity">
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,37 +10,14 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/moyeit"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:textColor="#80c2b4"
-            android:textSize="25dp"
-            android:text="모여!t"
-            android:gravity="center"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="닉네임 : " />
 
         <TextView
             android:id="@+id/nickname"
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="#b8e7d7"
-            android:padding="10dp"
-            android:text="닉네임"
-            android:gravity="center"/>
-
-        <EditText
-            android:id="@+id/nickname_edit"
-            android:inputType="textShortMessage"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:padding="10dp" />
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
     <LinearLayout
@@ -51,22 +26,16 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/title"
-            android:layout_width="70dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="#b8e7d7"
-            android:padding="10dp"
-            android:text="제목"
-            android:gravity="center"/>
+            android:text="제목 : " />
 
         <EditText
             android:id="@+id/title_edit"
-            android:inputType="textShortMessage"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:padding="10dp" />
+            android:ems="10"
+            android:inputType="textPersonName" />
     </LinearLayout>
 
     <LinearLayout
@@ -76,20 +45,16 @@
 
         <TextView
             android:id="@+id/region"
-            android:layout_width="70dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="#b8e7d7"
-            android:padding="10dp"
-            android:text="지역"
-            android:gravity="center"/>
+            android:text="지역 : " />
 
         <EditText
             android:id="@+id/region_edit"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:padding="10dp" />
+            android:ems="10"
+            android:inputType="textPersonName" />
     </LinearLayout>
 
     <LinearLayout
@@ -99,51 +64,106 @@
 
         <TextView
             android:id="@+id/limitnum"
-            android:layout_width="70dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="#b8e7d7"
-            android:padding="10dp"
-            android:text="제한인원"
-            android:gravity="center"/>
+            android:text="인원 : " />
 
         <EditText
             android:id="@+id/limitnum_edit"
-            android:inputType="number"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:padding="10dp" />
+            android:ems="10"
+            android:hint="숫자로 입력하세요"
+            android:inputType="textPersonName" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/detail"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#9dddcd"
-        android:gravity="center"
-        android:padding="10dp"
-        android:text="내용" />
+        android:orientation="horizontal">
 
-    <EditText
-        android:id="@+id/detail_edit"
-        android:inputType="textLongMessage"
+        <TextView
+            android:id="@+id/detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="내용 : " />
+
+        <EditText
+            android:id="@+id/detail_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:hint="내용을 적어주세요" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/subject"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="언어 : " />
+
+        <EditText
+            android:id="@+id/subject_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="'C, C++, JAVA, android, web, 기타' 중에 입력하세요" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="저장" />
+        android:text="Button" />
 
     <TextView
-        android:text="Result"
-        android:id="@+id/registerresult"
+        android:id="@+id/sampleText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="10dp" />
+        android:text="TextView" />
 
 </LinearLayout>
+
+    <!--<?xml version="1.0" encoding="UTF-8"?>--><!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"--><!--xmlns:tools="http://schemas.android.com/tools"--><!--android:layout_width="match_parent"--><!--android:layout_height="match_parent"--><!--android:orientation="vertical"--><!--tools:context="com.example.moyeit.moyeitapp.activity.RegisterActivity">-->
+
+    <!--<LinearLayout--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content"--><!--android:orientation="horizontal">-->
+
+    <!--<TextView--><!--android:id="@+id/moyeit"--><!--android:layout_width="match_parent"--><!--android:layout_height="50dp"--><!--android:textColor="#80c2b4"--><!--android:textSize="25dp"--><!--android:text="모여!t"--><!--android:gravity="center"/>--><!--</LinearLayout>-->
+
+    <!--<LinearLayout--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content"--><!--android:orientation="horizontal">-->
+
+    <!--<TextView--><!--android:id="@+id/nickname"--><!--android:layout_width="70dp"--><!--android:layout_height="wrap_content"--><!--android:layout_weight="1"--><!--android:background="#b8e7d7"--><!--android:padding="10dp"--><!--android:text="닉네임"--><!--android:gravity="center"/>-->
+
+    <!--<EditText--><!--android:id="@+id/nickname_edit"--><!--android:inputType="textShortMessage"--><!--android:layout_width="wrap_content"--><!--android:layout_height="wrap_content"--><!--android:layout_weight="3"--><!--android:padding="10dp" />--><!--</LinearLayout>-->
+
+    <!--<LinearLayout--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content"--><!--android:orientation="horizontal">-->
+
+    <!--<TextView--><!--android:id="@+id/title"--><!--android:layout_width="70dp"--><!--android:layout_height="wrap_content"--><!--android:layout_weight="1"--><!--android:background="#b8e7d7"--><!--android:padding="10dp"--><!--android:text="제목"--><!--android:gravity="center"/>-->
+
+    <!--<EditText--><!--android:id="@+id/title_edit"--><!--android:inputType="textShortMessage"--><!--android:layout_width="wrap_content"--><!--android:layout_height="wrap_content"--><!--android:layout_weight="3"--><!--android:padding="10dp" />--><!--</LinearLayout>-->
+
+    <!--<LinearLayout--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content"--><!--android:orientation="horizontal">-->
+
+    <!--<TextView--><!--android:id="@+id/region"--><!--android:layout_width="70dp"--><!--android:layout_height="wrap_content"--><!--android:layout_weight="1"--><!--android:background="#b8e7d7"--><!--android:padding="10dp"--><!--android:text="지역"--><!--android:gravity="center"/>-->
+
+    <!--<EditText--><!--android:id="@+id/region_edit"--><!--android:layout_width="wrap_content"--><!--android:layout_height="wrap_content"--><!--android:layout_weight="3"--><!--android:padding="10dp" />--><!--</LinearLayout>-->
+
+    <!--<LinearLayout--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content"--><!--android:orientation="horizontal">-->
+
+    <!--<TextView--><!--android:id="@+id/limitnum"--><!--android:layout_width="70dp"--><!--android:layout_height="wrap_content"--><!--android:layout_weight="1"--><!--android:background="#b8e7d7"--><!--android:padding="10dp"--><!--android:text="제한인원"--><!--android:gravity="center"/>-->
+
+    <!--<EditText--><!--android:id="@+id/limitnum_edit"--><!--android:inputType="number"--><!--android:layout_width="wrap_content"--><!--android:layout_height="wrap_content"--><!--android:layout_weight="3"--><!--android:padding="10dp" />--><!--</LinearLayout>-->
+
+    <!--<TextView--><!--android:id="@+id/detail"--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content"--><!--android:background="#9dddcd"--><!--android:gravity="center"--><!--android:padding="10dp"--><!--android:text="내용" />-->
+
+    <!--<EditText--><!--android:id="@+id/detail_edit"--><!--android:inputType="textLongMessage"--><!--android:layout_width="match_parent"--><!--android:layout_height="200dp"--><!--android:hint="내용을 적어주세요" />-->
+
+    <!--<Button--><!--android:id="@+id/save"--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content"--><!--android:text="저장" />-->
+
+    <!--<TextView--><!--android:text="Result"--><!--android:id="@+id/registerresult"--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content"--><!--android:gravity="center"--><!--android:padding="10dp" />-->
+
+    <!--</LinearLayout>-->

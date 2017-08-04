@@ -16,6 +16,7 @@ public class RegisterDto {
     String detail;
     String state;
     int sid;
+    String subject;
 
     public String getState() {
         return state;
@@ -71,5 +72,13 @@ public class RegisterDto {
 
     public void setSid(int sid) {
         this.sid = sid;
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
     }
 }

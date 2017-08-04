@@ -1,71 +1,67 @@
 package com.example.moyeit.moyeitapp.dto;
 
 /**
- * Created by Home on 2017-07-27.
+ * Created by Home on 2017-08-01.
  */
 
 public class MyStudyDto {
-    int pid;
+
     String title;
-    String nick;
-    int cont;
-    int limit;
-    String detail;
+    String nickname;
+    int limitnum;
+    int contnum;
+    String region;
     int sid;
 
-    public int getCont() {
-        return cont;
+    public MyStudyDto() {
+
     }
 
-    public void setCont(int cont) {
-        this.cont = cont;
-    }
-
-    public String getNick() {
-        return nick;
-    }
-
-    public void setNick(String nick){
-        this.nick = nick;
-    }
-
-    public int getPid(){
-        return pid;
-    }
-
-    public void setPid(int pid){
-        this.pid = pid;
-    }
-
-    public String getTitle(){
-        return title;
-    }
-
-    public void setTitle(String title){
+    public void setTitle(String title) {
         this.title = title;
     }
 
-    public int getLimit(){
-        return limit;
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
-    public void setLimit(int limit){
-        this.limit = limit;
+    public void setLimitnum(int limitnum) {
+        this.limitnum = limitnum;
     }
 
-    public String getDetail(){
-        return detail;
+    public void setContnum(int contnum) {
+        this.contnum = contnum;
     }
 
-    public void setDetail(String detail){
-        this.detail = detail;
+    public void setRegion(String region) {
+        this.region = region;
+    }
+
+    public void setSid(int sid) {
+        this.sid = sid;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public int getLimitnum() {
+        return limitnum;
+    }
+
+    public int getContnum() {
+        return contnum;
+    }
+
+    public String getRegion() {
+        return region;
     }
 
     public int getSid() {
         return sid;
-    }
-
-    public void setSid(int sid){
-        this.sid = sid;
     }
 }
