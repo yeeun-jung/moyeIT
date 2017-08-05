@@ -1,4 +1,5 @@
 package com.example.moyeit.moyeitapp.Service;
+import com.example.moyeit.moyeitapp.dto.BrdDto;
 import com.example.moyeit.moyeitapp.dto.CmoimDto;
 import com.example.moyeit.moyeitapp.dto.MoimDto;
 import com.example.moyeit.moyeitapp.dto.UserDto;
@@ -29,6 +30,13 @@ public interface MoyeITServerService {
     @FormUrlEncoded
     @POST("mystudy/moim/vote.php")
     Call<MoimDto> votemoim(@Field("vote") String vote, @Field("mid") String mid);
+
+    @FormUrlEncoded
+    @POST("mystudy/brd/add.php")
+    Call<BrdDto> addbrd(@Field("brdtitle") String brdtitle, @Field("content") String content, @Field("nickname") String nickname, @Field("sid") String sid);
+
+    @GET("mystudy/brd/detail.php")
+    Call<BrdDto> detailbrd(@Query("sid") String sid);
 
     /*@GET("mystudy/moim/add.php")
     Call<MoimDto> addmoim();*/

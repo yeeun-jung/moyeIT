@@ -10,6 +10,8 @@ public class MoimDto {
 
     private String moimtitle;
     private int limitnum;
+    private int agrnum;
+    private int disnum;
     private String content;
     private int no;
     private int pid;
@@ -27,6 +29,22 @@ public class MoimDto {
 
     public void setMoimtitle(String moimtitle) {
         this.moimtitle = moimtitle;
+    }
+
+    public int getAgrnum() {
+        return agrnum;
+    }
+
+    public void setAgrnum(int agrnum) {
+        this.agrnum = agrnum;
+    }
+
+    public int getDisnum() {
+        return disnum;
+    }
+
+    public void setDisnum(int disnum) {
+        this.disnum = disnum;
     }
 
     public int getLimitnum() {

@@ -2,6 +2,7 @@ package com.example.moyeit.moyeitapp.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -43,6 +44,10 @@ public class MoimDetailActivity extends Activity {
     private Button btnagree;
     private Button btndisagree;
     private Button btnaddcomment;
+    private int agrnum;
+    private int disnum;
+    private int votenum;
+    private int limitnum;
     private String nickname;
     private String commentvalue;
     ArrayList<String> arrayList = new ArrayList<String>();
@@ -50,6 +55,8 @@ public class MoimDetailActivity extends Activity {
     public UserDto userDto;
     public MoyeITServerClient moyeClient;
     public MoyeITServerService moyeService;
+    Intent intent = getIntent();
+    private boolean voteavailable = true;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,8 +79,8 @@ public class MoimDetailActivity extends Activity {
          /*
             server api 호출
          */
-                    sid = "1"; //나중에 수정하기(현재 참여하고 들어와 있는 스터디의 id를 받아와야함)
-                    no = "1"; //나중에 수정하기(모임게시글 리스트 중 클릭한 게시글의 no를 받아와야함)
+                    sid = intent.getExtras().getString("sid"); //나중에 수정하기(현재 참여하고 들어와 있는 스터디의 id를 받아와야함)
+                    no = intent.getExtras().getString("no"); //나중에 수정하기(모임게시글 리스트 중 클릭한 게시글의 no를 받아와야함)
 
                     Call<MoimDto> callMoimDetailInfo = moyeService.detailmoim(sid, no);
                         //상세조회
@@ -81,6 +88,9 @@ public class MoimDetailActivity extends Activity {
                         @Override
                         public void onResponse(Call<MoimDto> call, Response<MoimDto> response) {
                             mid = Integer.toString(response.body().getMid());
+                            agrnum = response.body().getAgrnum();
+                            disnum = response.body().getDisnum();
+                            limitnum = response.body().getLimitnum();
                             textTitle.setText(response.body().getMoimtitle());
                             textDetail.setText(response.body().getContent());
                             textCdate.setText(response.body().getDate());
@@ -88,7 +98,24 @@ public class MoimDetailActivity extends Activity {
                                 arrayList.add(response.body().getList().get(i).getUser() + " : " + response.body().getList().get(i).getComment());
                             }
                             textComment.setAdapter(Adapter);
+                            //textCdate.setText(Integer.toString(agrnum));
+                            //textMuser.setText(Integer.toString(num));
                             textMuser.setText(response.body().getMuser());
+
+                            votenum = agrnum + disnum;
+                            if(votenum >= limitnum){
+                                voteavailable = false;
+                                if(agrnum > disnum){
+                                    btndisagree.setEnabled(false);
+                                    btnagree.setBackgroundColor(Color.RED);
+                                }else if(agrnum < disnum){
+                                    btnagree.setEnabled(false);
+                                    btndisagree.setBackgroundColor(Color.RED);
+                                }else if(agrnum == disnum){
+                                    btnagree.setBackgroundColor(Color.RED);
+                                    btndisagree.setBackgroundColor(Color.RED);
+                                }
+                            }
                         }
                         @Override
                         public void onFailure(Call<MoimDto> call, Throwable t) {
@@ -96,48 +123,52 @@ public class MoimDetailActivity extends Activity {
                         }
                     });
                     //투표
-                    btnagree.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
+                    if(voteavailable == true) {
+                        btnagree.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
                             /*
                         server api 호출
                         */
-                            vote = "true"; //true:찬성, false:반대
-                            Call<MoimDto> callMoimVoteInfo = moyeService.votemoim(vote, mid);
+                                vote = "true"; //true:찬성, false:반대
+                                Call<MoimDto> callMoimVoteInfo = moyeService.votemoim(vote, mid);
 
-                            callMoimVoteInfo.enqueue(new Callback<MoimDto>() {
+                                callMoimVoteInfo.enqueue(new Callback<MoimDto>() {
                                     @Override
                                     public void onResponse(Call<MoimDto> call, Response<MoimDto> response) {
                                         textInform.setText(response.body().getState());
                                     }
+
                                     @Override
                                     public void onFailure(Call<MoimDto> call, Throwable t) {
-                                        textInform.setText("실패"+t.toString());
+                                        textInform.setText("실패" + t.toString());
                                     }
-                            });
-                        }
-                    });
-                    btndisagree.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
+                                });
+                            }
+                        });
+                        btndisagree.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
                                         /*
                                     server api 호출
                                     */
-                            vote = "false"; //true:찬성, false:반대
-                            Call<MoimDto> callMoimVoteInfo = moyeService.votemoim(vote, mid);
+                                vote = "false"; //true:찬성, false:반대
+                                Call<MoimDto> callMoimVoteInfo = moyeService.votemoim(vote, mid);
 
-                            callMoimVoteInfo.enqueue(new Callback<MoimDto>() {
-                                @Override
-                                public void onResponse(Call<MoimDto> call, Response<MoimDto> response) {
-                                    textInform.setText(response.body().getState());
-                                }
-                                @Override
-                                public void onFailure(Call<MoimDto> call, Throwable t) {
-                                    textInform.setText("실패"+t.toString());
-                                }
-                            });
-                        }
-                    });
+                                callMoimVoteInfo.enqueue(new Callback<MoimDto>() {
+                                    @Override
+                                    public void onResponse(Call<MoimDto> call, Response<MoimDto> response) {
+                                        textInform.setText(response.body().getState());
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<MoimDto> call, Throwable t) {
+                                        textInform.setText("실패" + t.toString());
+                                    }
+                                });
+                            }
+                        });
+                    }
                     //댓글작성(insert에서 에러가 남 fail뜸)
                     btnaddcomment.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -147,18 +178,27 @@ public class MoimDetailActivity extends Activity {
                                                 */
                             commentvalue = editComment.getText().toString();
                             nickname = userDto.getNickname();
-                            Call<CmoimDto> callMoimCommentInfo = moyeService.commentmoim(nickname, commentvalue, mid);
 
-                            callMoimCommentInfo.enqueue(new Callback<CmoimDto>() {
-                                @Override
-                                public void onResponse(Call<CmoimDto> call, Response<CmoimDto> response) {
-                                    textInform.setText(response.body().getState());
-                                }
-                                @Override
-                                public void onFailure(Call<CmoimDto> call, Throwable t) {
-                                    textInform.setText("실패"+t.toString());
-                                }
-                            });
+                            if(commentvalue.equals("")){
+                                Toast.makeText(MoimDetailActivity.this, "내용을 입력해주세요.", Toast.LENGTH_SHORT).show();
+                                return;
+                            }else {
+                                Call<CmoimDto> callMoimCommentInfo = moyeService.commentmoim(nickname, commentvalue, mid);
+
+                                callMoimCommentInfo.enqueue(new Callback<CmoimDto>() {
+                                    @Override
+                                    public void onResponse(Call<CmoimDto> call, Response<CmoimDto> response) {
+                                        textInform.setText(response.body().getState());
+                                        Intent intent = new Intent(getApplicationContext(), MoimDetailActivity.class);
+                                        startActivity(intent);
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<CmoimDto> call, Throwable t) {
+                                        textInform.setText("실패" + t.toString());
+                                    }
+                                });
+                            }
                         }
                     });
     }
