@@ -85,7 +85,6 @@ public class LoginActivity extends Activity {
                             userDto.setPid(response.body().getPid());
                             userDto.setRegion(response.body().getRegion());
                             Toast.makeText(LoginActivity.this, response.body().getNickname()+"님, 안녕하세요.", Toast.LENGTH_SHORT).show();
-
                             Intent intent =new Intent(getApplicationContext(),MsMainActivity.class);
                             startActivity(intent);
                         }else if(!response.body().getPwd().equals(editPwdValue)){

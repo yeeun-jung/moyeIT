@@ -52,15 +52,15 @@ public class MsMainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mystudy_main);
-
+        userDto=UserDto.getInstance();
         moyeClient = new MoyeITServerClient(getApplicationContext());
         moyeService = moyeClient.getMoyeITService();
 
         nickName = (TextView)findViewById(R.id.u_name);
         mstudyList = (ListView)findViewById(R.id.u_list);
 
-        Call<ListDto> myStudyList = moyeService.myStudyList(userDto.getInstance().getPid());
-        nickName.setText(String.valueOf(userDto.getInstance().getNickname()));
+        Call<ListDto> myStudyList = moyeService.myStudyList(userDto.getPid());
+        nickName.setText(String.valueOf(userDto.getNickname()));
         myStudyList.enqueue(new Callback<ListDto>() {
             @Override
             public void onResponse(Call<ListDto> call, Response<ListDto> response) {

@@ -36,7 +36,7 @@ import retrofit2.Response;
  * Created by ga0 on 2017-08-03.
  */
 
-public class SrListActivity extends Activity{
+public class SrListActivity extends Activity {
 
     public MoyeITServerClient moyeClient;
     public MoyeITServerService moyeService;
@@ -47,6 +47,10 @@ public class SrListActivity extends Activity{
     Button searchBtn;
     String sid;
     String join;
+    String[] searchval;
+    Call < SrListDto > srList;
+    TextView textViewsea;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,21 +59,51 @@ public class SrListActivity extends Activity{
         moyeClient = new MoyeITServerClient(getApplicationContext());
         moyeService = moyeClient.getMoyeITService();
 
-        list = (ListView)findViewById(R.id.s_srList);
-        searchText = (EditText)findViewById(R.id.s_searchText);
-        searchBtn = (Button)findViewById(R.id.s_searchBtn);
+
+        list = (ListView) findViewById(R.id.s_srList);
+        searchText = (EditText) findViewById(R.id.s_searchText);
+        searchBtn = (Button) findViewById(R.id.s_searchBtn);
+        textViewsea = (TextView) findViewById(R.id.textViewsea);
 
         userDto = UserDto.getInstance();
-        String pid = String.valueOf(userDto.getPid());
+        final String pid = String.valueOf(userDto.getPid());
 
-        Call<SrListDto> srList = moyeService.srList("",pid);
+       srList = moyeService.srList(searchval, userDto.getPid());
+
+        searchBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String str=searchText.getText().toString().trim();
+               searchval =str.split("\\s+");
+               srList = moyeService.srList(searchval, userDto.getPid());
+                srList.enqueue(new Callback<SrListDto>() {
+                    @Override
+                    public void onResponse(Call<SrListDto> call, Response<SrListDto> response) {
+                        ArrayList<SrListDetailDto> detailList = response.body().getList();
+                        adapter = new SrListViewAdapter(SrListActivity.this, R.layout.simple_list_item_4, detailList);
+                        list.setAdapter(adapter);
+                        if(response.body().getList().toString().equals("[]")) {
+                            textViewsea.setText("검색어와 일치하는 스터디가 없습니다.");
+                        }else{
+                            textViewsea.setText("");
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<SrListDto> call, Throwable t) {
+
+                    }
+                });
+
+            }
+        });
+
         srList.enqueue(new Callback<SrListDto>() {
             @Override
             public void onResponse(Call<SrListDto> call, Response<SrListDto> response) {
                 ArrayList<SrListDetailDto> detailList = response.body().getList();
                 adapter = new SrListViewAdapter(SrListActivity.this, R.layout.simple_list_item_4, detailList);
                 list.setAdapter(adapter);
-
             }
 
             @Override
@@ -78,32 +112,38 @@ public class SrListActivity extends Activity{
             }
         });
 
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                TextView sidText = (TextView)view.findViewById(R.id.sid);
-                TextView joinText = (TextView)view.findViewById(R.id.join);
-                sid= (String)sidText.getText();
-                join = (String)joinText.getText();
+                TextView sidText = (TextView) view.findViewById(R.id.sid);
+                TextView joinText = (TextView) view.findViewById(R.id.join);
 
-                if(join.equals("true")){
-                    Intent intent = new Intent(getApplicationContext(),MsDetailListDto.class);
+                sid = (String) sidText.getText();
+                join = (String) joinText.getText();
+
+
+                //가입한 스터디
+                if (join.equals("true")) {
+                    Intent intent = new Intent(getApplicationContext(), MsDetailActivity.class);
                     intent.putExtra("sid", sid);
                     startActivity(intent);
 
                 }
-                else{
-                    Intent intent = new Intent(getApplicationContext(),SampleActivity.class);
+                //가입 안 한 스터디 디테일 뷰
+                else {
+                    Intent intent = new Intent(getApplicationContext(), StudyDetailActivity.class);
                     intent.putExtra("sid", sid);
-                    startActivity(intent);}
+                    intent.putExtra("join",join);
+                    startActivity(intent);
+                }
 
 
             }
         });
 
+
     }
 }
-
 
 
 class SrListViewAdapter extends BaseAdapter {
