@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.example.moyeit.moyeitapp.Network.MoyeITServerClient;
 import com.example.moyeit.moyeitapp.R;
 import com.example.moyeit.moyeitapp.dto.ListDto;
+import com.example.moyeit.moyeitapp.dto.MsDetailListDto;
 import com.example.moyeit.moyeitapp.dto.MyStudyDto;
 import com.example.moyeit.moyeitapp.Service.MoyeITServerService;
 import com.example.moyeit.moyeitapp.dto.MyStudyDto;

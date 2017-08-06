@@ -28,7 +28,7 @@ public class StudyDetailActivity extends Activity {
     private Button joinBtn;
     private TextView textView;
     private UserDto user;
-String join;
+    String join;
     public MoyeITServerClient moyeClient;
     public MoyeITServerService moyeService;
     public StudyDetailDto detail;
@@ -40,7 +40,7 @@ String join;
 
         Intent intent = getIntent();
         final int sid=Integer.parseInt(intent.getStringExtra("sid"));
-join= intent.getStringExtra("join");
+        join= intent.getStringExtra("join");
 
         joinBtn = (Button) findViewById(R.id.buttonJoin);
         textView = (TextView) findViewById(R.id.textView_study_detail);

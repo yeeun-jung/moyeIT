@@ -1,4 +1,5 @@
 package com.example.moyeit.moyeitapp.Service;
+import com.example.moyeit.moyeitapp.dto.BoardListDto;
 import com.example.moyeit.moyeitapp.dto.ListDto;
 import com.example.moyeit.moyeitapp.dto.MsDetailDto;
 import com.example.moyeit.moyeitapp.dto.MyStudyDto;
@@ -49,5 +50,8 @@ public interface MoyeITServerService {
     @GET("study/join.php")
     Call<StudyDetailDto>StudyJoin(@Query("pid") int pid, @Query("sid") int sid);
 
+
+    @GET("board/list.php")
+    Call<BoardListDto> bdList(@Query("sid") int id);
 
 }

@@ -1,40 +1,40 @@
 <resources>
-    <string name="app_name">MoyeITapp</string>
+<string name="app_name">MoyeITapp</string>
 
-    <!-- Strings related to login -->
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password (optional)</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="error_invalid_email">This email address is invalid</string>
-    <string name="error_invalid_password">This password is too short</string>
-    <string name="error_incorrect_password">This password is incorrect</string>
-    <string name="error_field_required">This field is required</string>
-    <string name="permission_rationale">"Contacts permissions are needed for providing email
-        completions."
-    </string>
-    <string name="title_activity_main">MainActivity</string>
-    <string name="str_region_spinner">지역을 선택하세요.</string>
-    <string name="str_subject_spinner">관련 분야를 선택하세요.</string>
-    <string-array name="str_array_region">
-        <item>서울</item>
-        <item>강원</item>
-        <item>경기</item>
-        <item>경남</item>
-        <item>경북</item>
-        <item>광주</item>
-        <item>대구</item>
-        <item>대전</item>
-        <item>부산</item>
-        <item>세종</item>
-        <item>울산</item>
-        <item>인천</item>
-        <item>전남</item>
-        <item>전북</item>
-        <item>제주</item>
-        <item>충남</item>
-        <item>충북</item>
-    </string-array>
-    ﻿<string name="tab1">모임방</string>
-    <string name="tab2">공지방</string>
+<!-- Strings related to login -->
+<string name="prompt_email">Email</string>
+<string name="prompt_password">Password (optional)</string>
+<string name="action_sign_in">Sign in or register</string>
+<string name="action_sign_in_short">Sign in</string>
+<string name="error_invalid_email">This email address is invalid</string>
+<string name="error_invalid_password">This password is too short</string>
+<string name="error_incorrect_password">This password is incorrect</string>
+<string name="error_field_required">This field is required</string>
+<string name="permission_rationale">"Contacts permissions are needed for providing email
+    completions."
+</string>
+<string name="title_activity_main">MainActivity</string>
+<string name="str_region_spinner">지역을 선택하세요.</string>
+<string name="str_subject_spinner">관련 분야를 선택하세요.</string>
+<string-array name="str_array_region">
+    <item>서울</item>
+    <item>강원</item>
+    <item>경기</item>
+    <item>경남</item>
+    <item>경북</item>
+    <item>광주</item>
+    <item>대구</item>
+    <item>대전</item>
+    <item>부산</item>
+    <item>세종</item>
+    <item>울산</item>
+    <item>인천</item>
+    <item>전남</item>
+    <item>전북</item>
+    <item>제주</item>
+    <item>충남</item>
+    <item>충북</item>
+</string-array>
+﻿<string name="tab1">모임방</string>
+<string name="tab2">공지방</string>
 </resources>

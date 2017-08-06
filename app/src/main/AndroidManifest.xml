@@ -27,7 +27,6 @@
         <activity android:name=".activity.SampleActivity"/>
         <activity android:name=".activity.StudyDetailActivity"/>
         <activity android:name=".activity.StudyRegiActivity"/>
-
     </application>
 
 </manifest>

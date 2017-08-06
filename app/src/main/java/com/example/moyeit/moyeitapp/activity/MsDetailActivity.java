@@ -20,6 +20,8 @@ import android.widget.TextView;
 import com.example.moyeit.moyeitapp.Network.MoyeITServerClient;
 import com.example.moyeit.moyeitapp.R;
 import com.example.moyeit.moyeitapp.Service.MoyeITServerService;
+import com.example.moyeit.moyeitapp.dto.BoardDetailListDto;
+import com.example.moyeit.moyeitapp.dto.BoardListDto;
 import com.example.moyeit.moyeitapp.dto.MsDetailDto;
 import com.example.moyeit.moyeitapp.dto.MsDetailListDto;
 import com.example.moyeit.moyeitapp.dto.MyStudyDto;
@@ -43,8 +45,11 @@ public class MsDetailActivity extends Activity {
     TextView detail_nickname;
     TextView detail_conlimitnum;
     ListView detail_list;
+    ListView board_list;
     msDetailListViewAdapter adapter;
+    BdListViewAdapter badapter;
     ArrayList<MsDetailListDto> list;
+    ArrayList<BoardDetailListDto> blist;
     int sid;
     String no;
 
@@ -60,6 +65,7 @@ public class MsDetailActivity extends Activity {
         detail_nickname = (TextView)findViewById(R.id.detail_nickname);
         detail_conlimitnum = (TextView)findViewById(R.id.detail_conlimitnum);
         detail_list = (ListView)findViewById(R.id.detail_list);
+        board_list = (ListView)findViewById(R.id.board_list);
 
         Intent intent = getIntent();
         sid = Integer.parseInt(intent.getExtras().getString("sid"));
@@ -93,6 +99,21 @@ public class MsDetailActivity extends Activity {
             @Override
             public void onFailure(Call<MsDetailDto> call, Throwable t) {
                 Log.i("실패","실패.........");
+            }
+        });
+
+        final Call<BoardListDto> boardList = moyeService.bdList(sid);
+        boardList.enqueue(new Callback<BoardListDto>() {
+            @Override
+            public void onResponse(Call<BoardListDto> call, Response<BoardListDto> response) {
+                blist = response.body().getList();
+                badapter = new BdListViewAdapter(MsDetailActivity.this, R.layout.bd_detail_list, blist);
+                board_list.setAdapter(badapter);
+            }
+
+            @Override
+            public void onFailure(Call<BoardListDto> call, Throwable t) {
+
             }
         });
 
@@ -158,6 +179,57 @@ class msDetailListViewAdapter extends BaseAdapter {
         TextView date = (TextView)convertView.findViewById(R.id.ms_detail_date);
         date.setText(src.get(position).getDate());
 
+
+        return convertView;
+    }
+}
+
+
+class BdListViewAdapter extends BaseAdapter{
+    Context maincon;
+    LayoutInflater Inflater;
+    ArrayList<BoardDetailListDto> src;
+    int layout;
+
+    public BdListViewAdapter(Context context, int alayout, ArrayList<BoardDetailListDto> asrc){
+        maincon = context;
+        Inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        src = asrc;
+        layout = alayout;
+    }
+
+    @Override
+    public int getCount() {
+        return src.size();
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return src.get(position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        final int pos = position;
+        if(convertView ==null){
+            convertView = Inflater.inflate(layout, parent,false);
+        }
+
+        TextView bd_detail_no = (TextView)convertView.findViewById(R.id.bd_detail_no);
+        bd_detail_no.setText(String.valueOf(src.size()-position));
+        TextView bd_detail_title = (TextView)convertView.findViewById(R.id.bd_detail_title);
+        bd_detail_title.setText(src.get(position).getTitle());
+        TextView bd_detail_date = (TextView)convertView.findViewById(R.id.bd_detail_date);
+        bd_detail_date.setText(src.get(position).getDate());
+        TextView bd_detail_name = (TextView)convertView.findViewById(R.id.bd_detail_name);
+        bd_detail_name.setText(src.get(position).getNickname());
+        TextView bd_detail_bid = (TextView)convertView.findViewById(R.id.bd_detail_bid);
+        bd_detail_bid.setText(src.get(position).getBid());
 
         return convertView;
     }
