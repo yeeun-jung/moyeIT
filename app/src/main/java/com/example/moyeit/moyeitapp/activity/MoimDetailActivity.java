@@ -78,10 +78,8 @@ public class MoimDetailActivity extends Activity {
          /*
             server api 호출
          */
-                    sid = "1";
-                    no = "1";
-                    //sid = intent.getExtras().getString("sid"); //나중에 수정하기(현재 참여하고 들어와 있는 스터디의 id를 받아와야함)
-                    //no = intent.getExtras().getString("no"); //나중에 수정하기(모임게시글 리스트 중 클릭한 게시글의 no를 받아와야함)
+                    sid = intent.getExtras().getString("sid"); //나중에 수정하기(현재 참여하고 들어와 있는 스터디의 id를 받아와야함)
+                    no = intent.getExtras().getString("no"); //나중에 수정하기(모임게시글 리스트 중 클릭한 게시글의 no를 받아와야함)
 
                     Call<MoimDto> callMoimDetailInfo = moyeService.detailmoim(sid, no);
                         //상세조회
