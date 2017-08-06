@@ -25,7 +25,7 @@ public class SampleActivity extends Activity{
         textView=(TextView)findViewById(R.id.sampleText);
 
         Intent intent = getIntent();
-        String sid = intent.getExtras().getString("sid");
+        String sid = intent.getExtras().getString("bid");
 
         textView.setText(sid);
 
