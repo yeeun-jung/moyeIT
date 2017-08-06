@@ -36,7 +36,7 @@ public interface MoyeITServerService {
     Call<BrdDto> addbrd(@Field("brdtitle") String brdtitle, @Field("content") String content, @Field("nickname") String nickname, @Field("sid") String sid);
 
     @GET("mystudy/brd/detail.php")
-    Call<BrdDto> detailbrd(@Query("sid") String sid);
+    Call<BrdDto> detailbrd(@Query("bid") String bid, @Query("sid") String sid);
 
     /*@GET("mystudy/moim/add.php")
     Call<MoimDto> addmoim();*/

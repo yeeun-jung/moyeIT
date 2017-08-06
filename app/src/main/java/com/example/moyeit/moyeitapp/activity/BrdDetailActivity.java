@@ -50,9 +50,10 @@ public class BrdDetailActivity extends Activity {
          /*
             server api 호출
          */
+        bid = intent.getExtras().getString("bid");
         sid = intent.getExtras().getString("sid"); //나중에 수정하기(현재 참여하고 들어와 있는 스터디의 id를 받아와야함)
 
-        Call<BrdDto> callBrdDetailInfo = moyeService.detailbrd(sid);
+        Call<BrdDto> callBrdDetailInfo = moyeService.detailbrd(bid, sid);
         //상세조회
         callBrdDetailInfo.enqueue(new Callback<BrdDto>() {
             @Override
