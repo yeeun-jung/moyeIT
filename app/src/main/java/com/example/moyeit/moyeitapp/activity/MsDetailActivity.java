@@ -137,7 +137,7 @@ public class MsDetailActivity extends Activity {
                 TextView bid_Text = (TextView)view.findViewById(R.id.bd_detail_bid);
                 bid = bid_Text.getText().toString();
                 Intent intent = new Intent(getApplicationContext(), SampleActivity.class);
-                // 연주가 만든 액티비티 이름으로 바꾸고 돌리기(테스트는 끝남 no랑 sid 넘겨주는 테스트는 끝남)
+                // 연주가 만든 액티비티 이름으로 바꾸고 돌리기(테스트는 끝남 bid 넘겨주는 테스트는 끝남)
                 intent.putExtra("bid", bid);
                 startActivity(intent);
             }
