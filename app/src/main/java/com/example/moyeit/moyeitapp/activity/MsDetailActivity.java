@@ -6,6 +6,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,7 +41,7 @@ import retrofit2.Response;
  * Created by ga0 on 2017-07-27.
  */
 
-public class MsDetailActivity extends Activity {
+public class MsDetailActivity extends AppCompatActivity {
     public MoyeITServerClient moyeClient;
     public MoyeITServerService moyeService;
     TextView detail_title;
@@ -70,6 +73,16 @@ public class MsDetailActivity extends Activity {
 
         Intent intent = getIntent();
         sid = Integer.parseInt(intent.getExtras().getString("sid"));
+
+        //floating button (하단의 +버튼)
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab1);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
 
         TabHost tabHost=(TabHost)findViewById(R.id.tabhost);
         tabHost.setup();

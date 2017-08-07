@@ -21,7 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".activity.MsMainActivity"/>
+        <activity android:name=".activity.MsMainActivity" android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".activity.MsDetailActivity"/>
         <activity android:name=".activity.SrListActivity"/>
         <activity android:name=".activity.SampleActivity"/>
