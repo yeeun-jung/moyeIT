@@ -39,7 +39,6 @@ public class MoimAddActivity extends Activity {
     public UserDto userDto;
     public MoyeITServerClient moyeClient;
     public MoyeITServerService moyeService;
-    Intent intent = getIntent();
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +63,7 @@ public class MoimAddActivity extends Activity {
                 contentvalue = content.getText().toString();
                 limitnumvalue = limitnum.getText().toString();
                 pidvalue = Integer.toString(userDto.getPid());
+                Intent intent = getIntent();
                 sidvalue = intent.getExtras().getString("sid"); //나중에 수정하기(현재 참여하고 들어와 있는 스터디의 id를 받아와야함)
 
                 if(moimtitlevalue.equals("")){

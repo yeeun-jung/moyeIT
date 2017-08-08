@@ -1,7 +1,13 @@
 package com.example.moyeit.moyeitapp.Service;
+import com.example.moyeit.moyeitapp.dto.BoardListDto;
 import com.example.moyeit.moyeitapp.dto.BrdDto;
 import com.example.moyeit.moyeitapp.dto.CmoimDto;
+import com.example.moyeit.moyeitapp.dto.ListDto;
 import com.example.moyeit.moyeitapp.dto.MoimDto;
+import com.example.moyeit.moyeitapp.dto.MsDetailDto;
+import com.example.moyeit.moyeitapp.dto.SrListDto;
+import com.example.moyeit.moyeitapp.dto.StudyDetailDto;
+import com.example.moyeit.moyeitapp.dto.StudyRegisterDTO;
 import com.example.moyeit.moyeitapp.dto.UserDto;
 
 import retrofit2.Call;
@@ -37,6 +43,35 @@ public interface MoyeITServerService {
 
     @GET("mystudy/brd/detail.php")
     Call<BrdDto> detailbrd(@Query("bid") String bid, @Query("sid") String sid);
+
+    @FormUrlEncoded
+    @POST("study/register.php")
+    Call<StudyRegisterDTO> studyRegi(@Field("nickname") String nickname,
+                                     @Field("title") String title,
+                                     @Field("region") int re,
+                                     @Field("limitnum") int li,
+                                     @Field("detail") String de,
+                                     @Field("subject") String subject,
+                                     @Field("pid") int pid);
+
+    @GET("mystudy/list.php")
+    Call<ListDto> myStudyList(@Query("pid") int id);
+
+    @GET("mystudy/moimlist.php")
+    Call<MsDetailDto> msMoimList(@Query("sid") int id);
+
+    @GET("study/list/search.php")
+    Call<SrListDto> srList(@Query("search[]") String[] search, @Query("pid") int id);
+
+    @GET("study/detail.php")
+    Call<StudyDetailDto> getStudyDetail(@Query("sid") int sid);
+
+    @GET("study/join.php")
+    Call<StudyDetailDto>StudyJoin(@Query("pid") int pid, @Query("sid") int sid);
+
+
+    @GET("board/list.php")
+    Call<BoardListDto> bdList(@Query("sid") int id);
 
     /*@GET("mystudy/moim/add.php")
     Call<MoimDto> addmoim();*/
