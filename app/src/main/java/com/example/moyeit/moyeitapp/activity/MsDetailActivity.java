@@ -6,6 +6,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,7 +41,7 @@ import retrofit2.Response;
  * Created by ga0 on 2017-07-27.
  */
 
-public class MsDetailActivity extends Activity {
+public class MsDetailActivity extends AppCompatActivity {
     public MoyeITServerClient moyeClient;
     public MoyeITServerService moyeService;
     TextView detail_title;
@@ -71,7 +74,7 @@ public class MsDetailActivity extends Activity {
         Intent intent = getIntent();
         sid = Integer.parseInt(intent.getExtras().getString("sid"));
 
-        TabHost tabHost=(TabHost)findViewById(R.id.tabhost);
+        final TabHost tabHost=(TabHost)findViewById(R.id.tabhost);
         tabHost.setup();
 
         TabSpec spec1 = tabHost.newTabSpec("Tab1");
@@ -85,6 +88,28 @@ public class MsDetailActivity extends Activity {
         tabHost.addTab(spec2);
 
         tabHost.setCurrentTab(0);
+
+        //floating button (하단의 +버튼)
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab1);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                /*Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();*/
+                if(tabHost.getCurrentTab() == 0){
+                    Intent intent = new Intent(getApplicationContext(),MoimAddActivity.class);
+                    // 연주가 만든 액티비티 이름으로 바꾸고 돌리기(테스트는 끝남 no랑 sid 넘겨주는 테스트는 끝남)
+                    intent.putExtra("sid", String.valueOf(sid));
+                    startActivity(intent);
+                }else{
+                    Intent intent = new Intent(getApplicationContext(),BrdAddActivity.class);
+                    // 연주가 만든 액티비티 이름으로 바꾸고 돌리기(테스트는 끝남 no랑 sid 넘겨주는 테스트는 끝남)
+                    intent.putExtra("sid", String.valueOf(sid));
+                    startActivity(intent);
+                }
+            }
+        });
+
         final Call<MsDetailDto> detailList = moyeService.msMoimList(sid);
         detailList.enqueue(new Callback<MsDetailDto>() {
             @Override
@@ -123,7 +148,7 @@ public class MsDetailActivity extends Activity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 TextView no_Text = (TextView)view.findViewById(R.id.ms_detail_no);
                 no = no_Text.getText().toString();
-                Intent intent = new Intent(getApplicationContext(),SampleActivity.class);
+                Intent intent = new Intent(getApplicationContext(),MoimDetailActivity.class);
                 // 연주가 만든 액티비티 이름으로 바꾸고 돌리기(테스트는 끝남 no랑 sid 넘겨주는 테스트는 끝남)
                 intent.putExtra("sid", String.valueOf(sid));
                 intent.putExtra("no",no);
@@ -136,8 +161,9 @@ public class MsDetailActivity extends Activity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 TextView bid_Text = (TextView)view.findViewById(R.id.bd_detail_bid);
                 bid = bid_Text.getText().toString();
-                Intent intent = new Intent(getApplicationContext(), SampleActivity.class);
+                Intent intent = new Intent(getApplicationContext(), BrdDetailActivity.class);
                 // 연주가 만든 액티비티 이름으로 바꾸고 돌리기(테스트는 끝남 bid 넘겨주는 테스트는 끝남)
+                intent.putExtra("sid", String.valueOf(sid));
                 intent.putExtra("bid", bid);
                 startActivity(intent);
             }

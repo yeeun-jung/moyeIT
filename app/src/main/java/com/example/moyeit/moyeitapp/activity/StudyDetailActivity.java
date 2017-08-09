@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -23,7 +24,7 @@ import retrofit2.Response;
  * Created by yeeun on 2017-08-05.
  */
 
-public class StudyDetailActivity extends Activity {
+public class StudyDetailActivity extends AppCompatActivity {
 
     private Button joinBtn;
     private TextView textView;

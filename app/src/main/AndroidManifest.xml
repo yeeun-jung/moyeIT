@@ -10,21 +10,29 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_moyeit"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.LoginActivity">
+        <activity
+            android:name=".activity.SplashActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/SplashTheme">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.MsMainActivity"/>
+        <activity android:name=".activity.LoginActivity" />
+        <activity android:name=".activity.SampleActivity" />
+        <activity android:name=".activity.MoimAddActivity" />
+        <activity android:name=".activity.MoimDetailActivity" />
+        <activity android:name=".activity.BrdAddActivity" />
+        <activity android:name=".activity.BrdDetailActivity" />
+        <activity android:name=".activity.MsMainActivity" android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".activity.MsDetailActivity"/>
         <activity android:name=".activity.SrListActivity"/>
-        <activity android:name=".activity.SampleActivity"/>
         <activity android:name=".activity.StudyDetailActivity"/>
         <activity android:name=".activity.StudyRegiActivity"/>
     </application>
