@@ -95,7 +95,7 @@ public class MoimDetailActivity extends AppCompatActivity {
                             textDetail.setText(response.body().getContent());
                             textCdate.setText(response.body().getDate());
                             for(int i = 0; i < response.body().getList().size(); i++) {
-                                arrayList.add(response.body().getList().get(i).getUser() + " : " + response.body().getList().get(i).getComment());
+                                arrayList.add(response.body().getList().get(i).getDatetime()+"\n"+response.body().getList().get(i).getUser() + " : " + response.body().getList().get(i).getComment());
                             }
                             textComment.setAdapter(Adapter);
                             textMuser.setText(response.body().getMuser());

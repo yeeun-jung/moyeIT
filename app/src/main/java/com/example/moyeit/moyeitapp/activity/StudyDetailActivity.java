@@ -27,7 +27,7 @@ import retrofit2.Response;
 public class StudyDetailActivity extends AppCompatActivity {
 
     private Button joinBtn;
-    private TextView textView;
+    private TextView textView, studyTitle;
     private UserDto user;
     String join;
     public MoyeITServerClient moyeClient;
@@ -40,11 +40,12 @@ public class StudyDetailActivity extends AppCompatActivity {
         setContentView(R.layout.study_detail);
 
         Intent intent = getIntent();
-        final int sid=Integer.parseInt(intent.getStringExtra("sid"));
-        join= intent.getStringExtra("join");
+        final int sid = Integer.parseInt(intent.getStringExtra("sid"));
+        join = intent.getStringExtra("join");
 
         joinBtn = (Button) findViewById(R.id.buttonJoin);
         textView = (TextView) findViewById(R.id.textView_study_detail);
+        studyTitle = (TextView) findViewById(R.id.textView_study);
 
         user = UserDto.getInstance();
 
@@ -58,8 +59,9 @@ public class StudyDetailActivity extends AppCompatActivity {
         callStudyDetail.enqueue(new Callback<StudyDetailDto>() {
             @Override
             public void onResponse(Call<StudyDetailDto> call, Response<StudyDetailDto> response) {
-                textView.setText("방장 닉네임: "+response.body().getNickname());
-                textView.append("\n상세내용: "+response.body().getDetail()+"\njoin: "+join);
+                studyTitle.setText(response.body().getTitle());
+                textView.setText("방장 닉네임: " + response.body().getNickname());
+                textView.append("\n상세내용: " + response.body().getDetail() + "\njoin: " + join);
             }
 
             @Override
@@ -70,7 +72,7 @@ public class StudyDetailActivity extends AppCompatActivity {
         joinBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Call<StudyDetailDto> bodyCall = moyeService.StudyJoin(user.getPid(),sid);
+                Call<StudyDetailDto> bodyCall = moyeService.StudyJoin(user.getPid(), sid);
                 bodyCall.enqueue(new Callback<StudyDetailDto>() {
                     @Override
                     public void onResponse(Call<StudyDetailDto> call, Response<StudyDetailDto> response) {
@@ -82,6 +84,7 @@ public class StudyDetailActivity extends AppCompatActivity {
 
                     }
                 });
-            }});
+            }
+        });
     }
 }
