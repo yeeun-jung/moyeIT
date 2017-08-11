@@ -12,11 +12,16 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.moyeit.moyeitapp.activity.SrListActivity"
     tools:showIn="@layout/app_bar_main_sr">
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_margin="@dimen/activity_vertical_margin"
+        android:layout_marginEnd="20dp"
         android:orientation="vertical">
 
         <LinearLayout
@@ -28,14 +33,16 @@
                 android:id="@+id/s_searchText"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="3" />
+                android:layout_weight="3"
+                android:hint="제목으로 검색"/>
 
             <Button
                 android:id="@+id/s_searchBtn"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="검색" />
+                android:text="검색"
+                style="@style/Widget.AppCompat.Button.Colored" />
         </LinearLayout>
 
         <ListView
@@ -45,20 +52,20 @@
 
         </ListView>
 
-        <TextView
-            android:id="@+id/textViewsea"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
 
+
+    </LinearLayout>
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab_sr"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
-            android:layout_margin="@dimen/fab_margin"
-            app:srcCompat="@android:drawable/ic_input_add" />
-
+            app:srcCompat="@android:drawable/ic_input_add"
+            android:layout_marginLeft="@dimen/fab_margin"
+            android:layout_marginRight="@dimen/fab_margin"
+            android:layout_marginTop="@dimen/fab_margin"
+            android:layout_marginBottom="@dimen/fab_margin"
+            android:layout_alignStart="@+id/linearLayout" />
     </LinearLayout>
 
 </RelativeLayout>

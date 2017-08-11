@@ -213,7 +213,7 @@ class ListViewAdapter extends BaseAdapter {
         TextView nickname = (TextView) convertView.findViewById(R.id.nickname);
         nickname.setText(src.get(position).getNickname());
         TextView contnum = (TextView) convertView.findViewById(R.id.cont_limitnum);
-        contnum.setText(String.valueOf(src.get(position).getContnum()) + "/" + String.valueOf(src.get(position).getLimitnum()));
+        contnum.setText(String.valueOf(src.get(position).getContnum() + "/" + String.valueOf(src.get(position).getLimitnum())));
         TextView sid = (TextView) convertView.findViewById(R.id.sid);
         sid.setText(String.valueOf(src.get(position).getSid()));
 

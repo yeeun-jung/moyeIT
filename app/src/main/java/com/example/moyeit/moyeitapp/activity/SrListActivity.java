@@ -23,6 +23,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.moyeit.moyeitapp.Network.MoyeITServerClient;
 import com.example.moyeit.moyeitapp.R;
@@ -59,7 +60,6 @@ public class SrListActivity extends AppCompatActivity
     String join;
     String[] searchval;
     Call < SrListDto > srList;
-    TextView textViewsea;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -73,7 +73,6 @@ public class SrListActivity extends AppCompatActivity
         list = (ListView) findViewById(R.id.s_srList);
         searchText = (EditText) findViewById(R.id.s_searchText);
         searchBtn = (Button) findViewById(R.id.s_searchBtn);
-        textViewsea = (TextView) findViewById(R.id.textViewsea);
 
         userDto = UserDto.getInstance();
         final String pid = String.valueOf(userDto.getPid());
@@ -94,9 +93,7 @@ public class SrListActivity extends AppCompatActivity
                         adapter = new SrListViewAdapter(SrListActivity.this, R.layout.simple_list_item_4, detailList);
                         list.setAdapter(adapter);
                         if(response.body().getList().toString().equals("[]")) {
-                            textViewsea.setText("검색어와 일치하는 스터디가 없습니다.");
-                        }else{
-                            textViewsea.setText("");
+                            Toast.makeText(SrListActivity.this, "검색어와 일치하는 스터디가 없습니다.", Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -193,28 +190,28 @@ public class SrListActivity extends AppCompatActivity
             super.onBackPressed();
         }
     }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+    /*
+        @Override
+        public boolean onCreateOptionsMenu(Menu menu) {
+            // Inflate the menu; this adds items to the action bar if it is present.
+            getMenuInflater().inflate(R.menu.main, menu);
+           eturn true;
         }
+    /*
+        @Override
+        public boolean onOptionsItemSelected(MenuItem item) {
+            // Handle action bar item clicks here. The action bar will
+            // automatically handle clicks on the Home/Up button, so long
+            // as you specify a parent activity in AndroidManifest.xml.
+            int id = item.getItemId();
+            //noinspection SimplifiableIfStatement
+            if (id == R.id.action_settings) {
+                return true;
+            }
 
-        return super.onOptionsItemSelected(item);
-    }
-
+            return super.onOptionsItemSelected(item);
+        }
+    */
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {

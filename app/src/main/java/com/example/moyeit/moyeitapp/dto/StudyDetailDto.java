@@ -12,6 +12,15 @@ public class StudyDetailDto {
     int region;
     int limitnum;
     int contnum;
+    int sid;
+
+    public int getSid() {
+        return sid;
+    }
+
+    public void setSid(int sid) {
+        this.sid = sid;
+    }
 
     public String getNickname() {
         return nickname;

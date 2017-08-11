@@ -53,7 +53,7 @@ public class StudyDetailActivity extends AppCompatActivity {
         moyeService = moyeClient.getMoyeITService();
 
         detail = new StudyDetailDto();
-
+        detail.setSid(sid);
         Call<StudyDetailDto> callStudyDetail = moyeService.getStudyDetail(sid);
 
         callStudyDetail.enqueue(new Callback<StudyDetailDto>() {
@@ -62,6 +62,7 @@ public class StudyDetailActivity extends AppCompatActivity {
                 studyTitle.setText(response.body().getTitle());
                 textView.setText("방장 닉네임: " + response.body().getNickname());
                 textView.append("\n상세내용: " + response.body().getDetail() + "\njoin: " + join);
+
             }
 
             @Override
@@ -76,7 +77,16 @@ public class StudyDetailActivity extends AppCompatActivity {
                 bodyCall.enqueue(new Callback<StudyDetailDto>() {
                     @Override
                     public void onResponse(Call<StudyDetailDto> call, Response<StudyDetailDto> response) {
-                        Toast.makeText(StudyDetailActivity.this, response.body().getState(), Toast.LENGTH_SHORT).show();
+                        if(response.body().getState().toString().equals("success")){
+                            Intent myintent = new Intent(getApplicationContext(),MsDetailActivity.class);
+                            myintent.putExtra("sid", Integer.toString(detail.getSid()));
+                            startActivity(myintent);
+                         //   textView.setText(detail.getSid());
+                        }
+
+
+
+
                     }
 
                     @Override

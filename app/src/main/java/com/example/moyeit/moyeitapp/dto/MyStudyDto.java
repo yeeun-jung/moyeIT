@@ -1,5 +1,7 @@
 package com.example.moyeit.moyeitapp.dto;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by ga0 on 2017-07-25.
  */
@@ -9,6 +11,7 @@ public class MyStudyDto {
     String title;
     String nickname;
     int limitnum;
+    @SerializedName("contnum")
     int contnum;
     int sid;
 
@@ -50,6 +53,7 @@ public class MyStudyDto {
     public int getLimitnum() {
         return limitnum;
     }
+
 
     public int getContnum() {
         return contnum;
