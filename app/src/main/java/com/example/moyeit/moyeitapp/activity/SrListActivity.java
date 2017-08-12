@@ -168,6 +168,8 @@ public class SrListActivity extends AppCompatActivity
         TextView textEmail = (TextView) nav_header.findViewById(R.id.textViewEmail);
         textEmail.setText(userDto.getEmail());
 
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
         //floating button (하단의 +버튼)
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_sr);
         fab.setOnClickListener(new View.OnClickListener() {
