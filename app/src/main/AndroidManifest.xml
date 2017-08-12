@@ -32,7 +32,7 @@
         <activity android:name=".activity.MsMainActivity" android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".activity.MsDetailActivity"/>
         <activity android:name=".activity.SrListActivity" android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".activity.StudyDetailActivity"/>
+        <activity android:name=".activity.StudyDetailActivity" android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".activity.StudyRegiActivity"/>
     </application>
 
