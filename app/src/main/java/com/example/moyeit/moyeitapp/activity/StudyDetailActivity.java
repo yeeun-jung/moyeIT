@@ -64,10 +64,10 @@ public class StudyDetailActivity extends AppCompatActivity {
             public void onResponse(Call<StudyDetailDto> call, Response<StudyDetailDto> response) {
                 String[] val=response.body().getTitle().toString().trim().split("]");
                 studyTitle.setText(val[2]);
-                textView.setText("방장 닉네임: " + response.body().getNickname());
-                textView.append("\n상세내용: " + response.body().getDetail());
-                textView.append("\n제한인원: " + response.body().getLimitnum());
-                textView.append("\n현재인원: " + response.body().getContnum()+"\n지역: "+val[0].replaceAll("\\[","")+"\n분야: "+val[1].replaceAll("\\[",""));
+                textView.setText("- 방장 닉네임: " + response.body().getNickname());
+                textView.append("\n- 상세내용: " + response.body().getDetail());
+                textView.append("\n- 제한인원: " + response.body().getLimitnum());
+                textView.append("\n- 현재인원: " + response.body().getContnum()+"\n- 지역: "+val[0].replaceAll("\\[","")+"\n- 분야: "+val[1].replaceAll("\\[",""));
                 if (response.body().getLimitnum() > response.body().getContnum()) {
                     joinBtn.setEnabled(true);
                     joinBtn.setText("참여하기");
