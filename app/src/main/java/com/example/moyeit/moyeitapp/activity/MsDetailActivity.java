@@ -146,12 +146,10 @@ public class MsDetailActivity extends AppCompatActivity {
                         .setAction("Action", null).show();*/
                 if (tabHost.getCurrentTab() == 0) {
                     Intent intent = new Intent(getApplicationContext(), MoimAddActivity.class);
-                    // 연주가 만든 액티비티 이름으로 바꾸고 돌리기(테스트는 끝남 no랑 sid 넘겨주는 테스트는 끝남)
                     intent.putExtra("sid", String.valueOf(sid));
                     startActivity(intent);
                 } else {
                     Intent intent = new Intent(getApplicationContext(), BrdAddActivity.class);
-                    // 연주가 만든 액티비티 이름으로 바꾸고 돌리기(테스트는 끝남 no랑 sid 넘겨주는 테스트는 끝남)
                     intent.putExtra("sid", String.valueOf(sid));
                     startActivity(intent);
                 }

@@ -10,7 +10,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.moyeit.moyeitapp.activity.MsMainActivity"
+    tools:context="com.example.moyeit.moyeitapp.activity.ReqManagerActivity"
     tools:showIn="@layout/app_bar_main">
 
     <LinearLayout
@@ -22,36 +22,41 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="4.31"
-                android:text="제목"
+                android:textStyle="bold"
                 android:textSize="8pt"
-                android:layout_marginLeft="5dp"
-                android:textStyle="bold"/>
-
+                android:text="방이름"/>
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.89"
                 android:textStyle="bold"
                 android:textSize="8pt"
-                android:text="방장"/>
+                android:text="요청자"/>
+
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:textStyle="bold"
                 android:textSize="8pt"
-                android:text="인원"/>
+                android:layout_marginLeft="3dp"
+                android:text="날짜"/>
 
         </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/transparent"
+            android:layout_marginTop="3dp"/>
         <ListView
-            android:id="@+id/u_list"
+            android:id="@+id/rm_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
         </ListView>
     </LinearLayout>
 </RelativeLayout>

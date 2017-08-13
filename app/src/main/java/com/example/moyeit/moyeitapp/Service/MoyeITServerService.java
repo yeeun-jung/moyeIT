@@ -9,6 +9,7 @@ import com.example.moyeit.moyeitapp.dto.SrListDto;
 import com.example.moyeit.moyeitapp.dto.StudyDetailDto;
 import com.example.moyeit.moyeitapp.dto.StudyRegisterDTO;
 import com.example.moyeit.moyeitapp.dto.UserDto;
+import com.example.moyeit.moyeitapp.dto.reqManagerDto;
 
 import retrofit2.Call;
 import retrofit2.http.*;
@@ -75,5 +76,8 @@ public interface MoyeITServerService {
 
     /*@GET("mystudy/moim/add.php")
     Call<MoimDto> addmoim();*/
+
+    @GET("request/manager.php")
+    Call<reqManagerDto> reqMList(@Query("pid") int id);
 
 }
