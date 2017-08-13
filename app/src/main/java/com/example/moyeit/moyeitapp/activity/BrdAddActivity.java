@@ -3,7 +3,11 @@ package com.example.moyeit.moyeitapp.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,7 +29,6 @@ import retrofit2.Response;
  */
 
 public class BrdAddActivity extends AppCompatActivity {
-    private TextView textInform;
     private EditText brdtitle;
     private EditText content;
     public String brdtitlevalue;
@@ -42,7 +45,6 @@ public class BrdAddActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.addbrd);
 
-        textInform = (TextView) findViewById(R.id.text_state);
         brdtitle = (EditText) findViewById(R.id.edit_brdtitle);
         content = (EditText) findViewById(R.id.edit_brddetail);
         addbrdBtn = (Button) findViewById(R.id.btn_addbrd);
@@ -74,14 +76,28 @@ public class BrdAddActivity extends AppCompatActivity {
                     callBrdInfo.enqueue(new Callback<BrdDto>() {
                         @Override
                         public void onResponse(Call<BrdDto> call, Response<BrdDto> response) {
-                            textInform.setText(response.body().getState());
                         }
                         @Override
                         public void onFailure(Call<BrdDto> call, Throwable t) {
-                            textInform.setText("실패"+t.toString());
+                            Log.i("실패", "실패");
                         }
                     });
                 } }
         });
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_add_brd);
+        setSupportActionBar(toolbar);
+        ActionBar actionBar =getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeAsUpIndicator(R.mipmap.noun_back);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -25,10 +25,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.LoginActivity" android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activity.MoimAddActivity" />
-        <activity android:name=".activity.MoimDetailActivity" />
-        <activity android:name=".activity.BrdAddActivity" />
-        <activity android:name=".activity.BrdDetailActivity" />
+        <activity android:name=".activity.MoimAddActivity" android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".activity.MoimDetailActivity" android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".activity.BrdAddActivity" android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".activity.BrdDetailActivity" android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".activity.MsMainActivity" android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".activity.MsDetailActivity" android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".activity.SrListActivity" android:theme="@style/AppTheme.NoActionBar"/>

@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.03"
         android:gravity="center"
-        android:textColor="#80c2b4"
+        android:textColor="#000000"
         android:textSize="25dp" />
 
     <TextView
@@ -33,7 +33,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:background="#b8e7d7"
+        android:background="@color/colorpopbg"
         android:gravity="left"
         android:padding="10dp"/>
 
