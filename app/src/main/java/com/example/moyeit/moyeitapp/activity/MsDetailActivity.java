@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.TabActivity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Point;
 import android.os.Build;
 import android.os.Bundle;
@@ -32,6 +33,7 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
+import android.widget.TabWidget;
 import android.widget.TextView;
 
 import com.example.moyeit.moyeitapp.Network.MoyeITServerClient;
@@ -119,6 +121,21 @@ public class MsDetailActivity extends AppCompatActivity {
         tabHost.addTab(spec2);
 
         tabHost.setCurrentTab(0);
+        tabHost.getTabWidget().getChildAt(0).setBackgroundColor(Color.parseColor("#F2CB61"));
+
+
+        tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
+            @Override
+            public void onTabChanged(String tabId) {
+                for(int i =0; i<tabHost.getTabWidget().getChildCount(); i++){
+                    tabHost.getTabWidget().getChildAt(i).setBackgroundColor(Color.parseColor("#ededed"));
+
+                }
+                tabHost.getTabWidget().getChildAt(tabHost.getCurrentTab()).setBackgroundColor(Color.parseColor("#F2CB61"));
+            }
+        });
+
+
 
         //floating button (하단의 +버튼)
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab1);
@@ -148,8 +165,6 @@ public class MsDetailActivity extends AppCompatActivity {
                 list = response.body().getList();
                 String[] val=response.body().getTitle().toString().split("]");
                 detail_title.setText(val[2].replaceAll("\\[",""));
-        //        detail_nickname.setText(response.body().getNickname());
-         //       detail_conlimitnum.setText(response.body().getContnum() + "/" + response.body().getLimitnum());
                 adapter = new msDetailListViewAdapter(MsDetailActivity.this, R.layout.ms_detail_list, list);
                 detail_list.setAdapter(adapter);
             }
@@ -278,7 +293,7 @@ class msDetailListViewAdapter extends BaseAdapter {
         }
 
         TextView no = (TextView) convertView.findViewById(R.id.ms_detail_no);
-        no.setText(src.get(position).getNo());
+        no.setText(String.valueOf(src.size() - position));
         TextView title = (TextView) convertView.findViewById(R.id.ms_detail_title);
         title.setText(src.get(position).getMoimtitle());
         TextView num = (TextView) convertView.findViewById(R.id.ms_detail_num);
