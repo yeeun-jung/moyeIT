@@ -3,7 +3,10 @@ package com.example.moyeit.moyeitapp.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -69,5 +72,21 @@ public class BrdDetailActivity extends AppCompatActivity {
                 textTitle.setText("실패"+t.toString());
             }
         });
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_detail_brd);
+        setSupportActionBar(toolbar);
+        ActionBar actionBar =getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeAsUpIndicator(R.mipmap.noun_back);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

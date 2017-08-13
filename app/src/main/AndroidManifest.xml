@@ -24,16 +24,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.LoginActivity" />
-        <activity android:name=".activity.MoimAddActivity" />
-        <activity android:name=".activity.MoimDetailActivity" />
-        <activity android:name=".activity.BrdAddActivity" />
-        <activity android:name=".activity.BrdDetailActivity" />
+        <activity android:name=".activity.LoginActivity" android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activity.MoimAddActivity" android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".activity.MoimDetailActivity" android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".activity.BrdAddActivity" android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".activity.BrdDetailActivity" android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".activity.MsMainActivity" android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".activity.MsDetailActivity"/>
+        <activity android:name=".activity.MsDetailActivity" android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".activity.SrListActivity" android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".activity.StudyDetailActivity"/>
+        <activity android:name=".activity.StudyDetailActivity" android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".activity.StudyRegiActivity"/>
+        <activity android:name=".activity.InformPopupActivity" android:theme="@android:style/Theme.DeviceDefault.Light.Dialog"/>
     </application>
 
 </manifest>

@@ -4,18 +4,32 @@ import android.app.Activity;
 import android.app.TabActivity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Point;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Display;
+import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.PopupWindow;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
@@ -28,6 +42,7 @@ import com.example.moyeit.moyeitapp.dto.BoardListDto;
 import com.example.moyeit.moyeitapp.dto.MsDetailDto;
 import com.example.moyeit.moyeitapp.dto.MsDetailListDto;
 import com.example.moyeit.moyeitapp.dto.MyStudyDto;
+import com.example.moyeit.moyeitapp.dto.StudyDetailDto;
 
 import org.w3c.dom.Text;
 
@@ -44,6 +59,10 @@ import retrofit2.Response;
 public class MsDetailActivity extends AppCompatActivity {
     public MoyeITServerClient moyeClient;
     public MoyeITServerService moyeService;
+    private Button btnClosePopup;
+    private Button btnCreatePopup;
+    private PopupWindow pwindo;
+    private int mWidthPixels, mHeightPixels;
     TextView detail_title;
     TextView detail_nickname;
     TextView detail_conlimitnum;
@@ -54,27 +73,39 @@ public class MsDetailActivity extends AppCompatActivity {
     ArrayList<MsDetailListDto> list;
     ArrayList<BoardDetailListDto> blist;
     int sid;
+    StudyDetailDto study;
     String bid;
     String no;
+
+    public MsDetailActivity() {
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ms_detail);
+        //툴바, 뒤로가기
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_mystudy_detail);
+        setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeAsUpIndicator(R.mipmap.noun_back);
 
         moyeClient = new MoyeITServerClient(getApplicationContext());
         moyeService = moyeClient.getMoyeITService();
 
-        detail_title = (TextView)findViewById(R.id.detail_title);
-        detail_nickname = (TextView)findViewById(R.id.detail_nickname);
-        detail_conlimitnum = (TextView)findViewById(R.id.detail_conlimitnum);
-        detail_list = (ListView)findViewById(R.id.detail_list);
-        board_list = (ListView)findViewById(R.id.board_list);
+        detail_title = (TextView) findViewById(R.id.detail_title);
+      //  detail_nickname = (TextView) findViewById(R.id.detail_nickname);
+       // detail_conlimitnum = (TextView) findViewById(R.id.detail_conlimitnum);
+        detail_list = (ListView) findViewById(R.id.detail_list);
+        board_list = (ListView) findViewById(R.id.board_list);
+        study=new StudyDetailDto();
+
 
         Intent intent = getIntent();
         sid = Integer.parseInt(intent.getExtras().getString("sid"));
-
-        final TabHost tabHost=(TabHost)findViewById(R.id.tabhost);
+        study.setSid(sid);
+        final TabHost tabHost = (TabHost) findViewById(R.id.tabhost);
         tabHost.setup();
 
         TabSpec spec1 = tabHost.newTabSpec("Tab1");
@@ -96,13 +127,13 @@ public class MsDetailActivity extends AppCompatActivity {
             public void onClick(View view) {
                 /*Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();*/
-                if(tabHost.getCurrentTab() == 0){
-                    Intent intent = new Intent(getApplicationContext(),MoimAddActivity.class);
+                if (tabHost.getCurrentTab() == 0) {
+                    Intent intent = new Intent(getApplicationContext(), MoimAddActivity.class);
                     // 연주가 만든 액티비티 이름으로 바꾸고 돌리기(테스트는 끝남 no랑 sid 넘겨주는 테스트는 끝남)
                     intent.putExtra("sid", String.valueOf(sid));
                     startActivity(intent);
-                }else{
-                    Intent intent = new Intent(getApplicationContext(),BrdAddActivity.class);
+                } else {
+                    Intent intent = new Intent(getApplicationContext(), BrdAddActivity.class);
                     // 연주가 만든 액티비티 이름으로 바꾸고 돌리기(테스트는 끝남 no랑 sid 넘겨주는 테스트는 끝남)
                     intent.putExtra("sid", String.valueOf(sid));
                     startActivity(intent);
@@ -115,16 +146,17 @@ public class MsDetailActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<MsDetailDto> call, Response<MsDetailDto> response) {
                 list = response.body().getList();
-                detail_title.setText(response.body().getTitle());
-                detail_nickname.setText(response.body().getNickname());
-                detail_conlimitnum.setText(response.body().getContnum()+"/"+response.body().getLimitnum());
+                String[] val=response.body().getTitle().toString().split("]");
+                detail_title.setText(val[2].replaceAll("\\[",""));
+        //        detail_nickname.setText(response.body().getNickname());
+         //       detail_conlimitnum.setText(response.body().getContnum() + "/" + response.body().getLimitnum());
                 adapter = new msDetailListViewAdapter(MsDetailActivity.this, R.layout.ms_detail_list, list);
                 detail_list.setAdapter(adapter);
             }
 
             @Override
             public void onFailure(Call<MsDetailDto> call, Throwable t) {
-                Log.i("실패","실패.........");
+                Log.i("실패", "실패.........");
             }
         });
 
@@ -143,15 +175,15 @@ public class MsDetailActivity extends AppCompatActivity {
             }
         });
 
-        detail_list.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+        detail_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                TextView no_Text = (TextView)view.findViewById(R.id.ms_detail_no);
+                TextView no_Text = (TextView) view.findViewById(R.id.ms_detail_no);
                 no = no_Text.getText().toString();
-                Intent intent = new Intent(getApplicationContext(),MoimDetailActivity.class);
+                Intent intent = new Intent(getApplicationContext(), MoimDetailActivity.class);
                 // 연주가 만든 액티비티 이름으로 바꾸고 돌리기(테스트는 끝남 no랑 sid 넘겨주는 테스트는 끝남)
                 intent.putExtra("sid", String.valueOf(sid));
-                intent.putExtra("no",no);
+                intent.putExtra("no", no);
                 startActivity(intent);
             }
         });
@@ -159,7 +191,7 @@ public class MsDetailActivity extends AppCompatActivity {
         board_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                TextView bid_Text = (TextView)view.findViewById(R.id.bd_detail_bid);
+                TextView bid_Text = (TextView) view.findViewById(R.id.bd_detail_bid);
                 bid = bid_Text.getText().toString();
                 Intent intent = new Intent(getApplicationContext(), BrdDetailActivity.class);
                 // 연주가 만든 액티비티 이름으로 바꾸고 돌리기(테스트는 끝남 bid 넘겨주는 테스트는 끝남)
@@ -168,7 +200,45 @@ public class MsDetailActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_inform, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home: {
+                onBackPressed();
+                break;
+            }
+            case R.id.menu_inform: {
+                Intent intent=new Intent(this,InformPopupActivity.class);
+                intent.putExtra("sid",Integer.toString(sid));
+                startActivity(intent);
+               // startActivity(new Intent(this, InformPopupActivity.class));
+                break;
+            }
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
+  /*
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if(id==R.id.menu_inform){
+          //  startActivity(new Intent(this, InformPopupActivity.class));
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }*/
+
+
 }
 
 
@@ -178,9 +248,9 @@ class msDetailListViewAdapter extends BaseAdapter {
     ArrayList<MsDetailListDto> src;
     int layout;
 
-    public msDetailListViewAdapter(Context context, int alayout, ArrayList<MsDetailListDto> asrc){
+    public msDetailListViewAdapter(Context context, int alayout, ArrayList<MsDetailListDto> asrc) {
         maincon = context;
-        Inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        Inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         src = asrc;
         layout = alayout;
     }
@@ -203,19 +273,19 @@ class msDetailListViewAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         final int pos = position;
-        if(convertView ==null){
-            convertView = Inflater.inflate(layout, parent,false);
+        if (convertView == null) {
+            convertView = Inflater.inflate(layout, parent, false);
         }
 
-        TextView no = (TextView)convertView.findViewById(R.id.ms_detail_no);
+        TextView no = (TextView) convertView.findViewById(R.id.ms_detail_no);
         no.setText(src.get(position).getNo());
-        TextView title = (TextView)convertView.findViewById(R.id.ms_detail_title);
+        TextView title = (TextView) convertView.findViewById(R.id.ms_detail_title);
         title.setText(src.get(position).getMoimtitle());
-        TextView num = (TextView)convertView.findViewById(R.id.ms_detail_num);
-        num.setText(String.valueOf(src.get(position).getAgrnum())+"/"+String.valueOf(src.get(position).getLimitnum()));
-        TextView user = (TextView)convertView.findViewById(R.id.ms_detail_user);
+        TextView num = (TextView) convertView.findViewById(R.id.ms_detail_num);
+        num.setText(String.valueOf(src.get(position).getAgrnum()) + "/" + String.valueOf(src.get(position).getLimitnum()));
+        TextView user = (TextView) convertView.findViewById(R.id.ms_detail_user);
         user.setText(src.get(position).getMuser());
-        TextView date = (TextView)convertView.findViewById(R.id.ms_detail_date);
+        TextView date = (TextView) convertView.findViewById(R.id.ms_detail_date);
         date.setText(src.get(position).getDate());
 
 
@@ -224,15 +294,15 @@ class msDetailListViewAdapter extends BaseAdapter {
 }
 
 
-class BdListViewAdapter extends BaseAdapter{
+class BdListViewAdapter extends BaseAdapter {
     Context maincon;
     LayoutInflater Inflater;
     ArrayList<BoardDetailListDto> src;
     int layout;
 
-    public BdListViewAdapter(Context context, int alayout, ArrayList<BoardDetailListDto> asrc){
+    public BdListViewAdapter(Context context, int alayout, ArrayList<BoardDetailListDto> asrc) {
         maincon = context;
-        Inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        Inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         src = asrc;
         layout = alayout;
     }
@@ -255,19 +325,19 @@ class BdListViewAdapter extends BaseAdapter{
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         final int pos = position;
-        if(convertView ==null){
-            convertView = Inflater.inflate(layout, parent,false);
+        if (convertView == null) {
+            convertView = Inflater.inflate(layout, parent, false);
         }
 
-        TextView bd_detail_no = (TextView)convertView.findViewById(R.id.bd_detail_no);
-        bd_detail_no.setText(String.valueOf(src.size()-position));
-        TextView bd_detail_title = (TextView)convertView.findViewById(R.id.bd_detail_title);
+        TextView bd_detail_no = (TextView) convertView.findViewById(R.id.bd_detail_no);
+        bd_detail_no.setText(String.valueOf(src.size() - position));
+        TextView bd_detail_title = (TextView) convertView.findViewById(R.id.bd_detail_title);
         bd_detail_title.setText(src.get(position).getTitle());
-        TextView bd_detail_date = (TextView)convertView.findViewById(R.id.bd_detail_date);
+        TextView bd_detail_date = (TextView) convertView.findViewById(R.id.bd_detail_date);
         bd_detail_date.setText(src.get(position).getDate());
-        TextView bd_detail_name = (TextView)convertView.findViewById(R.id.bd_detail_name);
+        TextView bd_detail_name = (TextView) convertView.findViewById(R.id.bd_detail_name);
         bd_detail_name.setText(src.get(position).getNickname());
-        TextView bd_detail_bid = (TextView)convertView.findViewById(R.id.bd_detail_bid);
+        TextView bd_detail_bid = (TextView) convertView.findViewById(R.id.bd_detail_bid);
         bd_detail_bid.setText(src.get(position).getBid());
 
         return convertView;
