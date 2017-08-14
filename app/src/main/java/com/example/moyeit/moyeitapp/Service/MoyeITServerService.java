@@ -78,6 +78,6 @@ public interface MoyeITServerService {
     Call<MoimDto> addmoim();*/
 
     @GET("request/manager.php")
-    Call<reqManagerDto> reqMList(@Query("pid") int id);
+    Call<reqManagerDto> reqMList(@Query("pid") int id , @Query("agree") String agree, @Query("aid") String aid);
 
 }
