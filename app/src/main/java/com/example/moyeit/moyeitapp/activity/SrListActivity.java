@@ -233,6 +233,8 @@ public class SrListActivity extends AppCompatActivity
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {
+            intent = new Intent(getApplicationContext(),ReqManagerActivity.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_send) {
 
