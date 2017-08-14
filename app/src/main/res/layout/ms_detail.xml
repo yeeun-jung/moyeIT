@@ -58,6 +58,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:textStyle="bold"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="3dp"
                 android:textSize="20dp"/>
@@ -97,13 +98,15 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal">
+                            android:orientation="horizontal"
+                            android:layout_marginTop="5dp">
 
                             <TextView
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="0.85"
                                 android:textStyle="bold"
+                                android:textSize="16dp"
                                 android:text="\n번호" />
 
                             <TextView
@@ -111,6 +114,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="2.67"
                                 android:textStyle="bold"
+                                android:textSize="16dp"
                                 android:text="\n제목" />
 
                             <TextView
@@ -118,6 +122,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="0.92"
                                 android:textStyle="bold"
+                                android:textSize="16dp"
                                 android:text="투표\n현황" />
 
                             <TextView
@@ -125,6 +130,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1.12"
                                 android:textStyle="bold"
+                                android:textSize="16dp"
                                 android:text="\n작성자" />
 
                             <TextView
@@ -132,6 +138,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="2.07"
                                 android:textStyle="bold"
+                                android:textSize="16dp"
                                 android:text="\n날짜" />
                         </LinearLayout>
                         <View
@@ -165,7 +172,7 @@
                                 android:layout_height="wrap_content"
                                 android:textStyle="bold"
                                 android:layout_weight="0.9"
-                                android:textSize="8pt"
+                                android:textSize="16dp"
                                 android:text="번호" />
 
                             <TextView
@@ -173,7 +180,7 @@
                                 android:layout_height="wrap_content"
                                 android:textStyle="bold"
                                 android:layout_weight="3.9"
-                                android:textSize="8pt"
+                                android:textSize="16dp"
                                 android:text="제목" />
 
                             <TextView
@@ -181,7 +188,7 @@
                                 android:layout_height="wrap_content"
                                 android:textStyle="bold"
                                 android:layout_weight="2.65"
-                                android:textSize="8pt"
+                                android:textSize="16dp"
                                 android:text="날짜" />
 
                             <TextView
@@ -189,7 +196,7 @@
                                 android:layout_height="wrap_content"
                                 android:textStyle="bold"
                                 android:layout_weight="1.66"
-                                android:textSize="8pt"
+                                android:textSize="16dp"
                                 android:text="작성자" />
 
 
