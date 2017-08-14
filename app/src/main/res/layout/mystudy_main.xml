@@ -47,6 +47,11 @@
                 android:text="인원"/>
 
         </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/transparent"
+            android:layout_marginTop="3dp"/>
         <ListView
             android:id="@+id/u_list"
             android:layout_width="match_parent"
