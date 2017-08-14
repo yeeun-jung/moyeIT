@@ -8,12 +8,14 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -26,11 +28,15 @@ import com.example.moyeit.moyeitapp.dto.UserDto;
 import com.example.moyeit.moyeitapp.dto.reqManagerDtlDto;
 import com.example.moyeit.moyeitapp.dto.reqManagerDto;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static java.sql.Types.NULL;
 
 /**
  * Created by ga0 on 2017-08-13.
@@ -46,7 +52,9 @@ public class ReqManagerActivity extends AppCompatActivity
     ArrayList<reqManagerDtlDto> dtl_list;
     ReqManagerAdapter adapter;
     ListView list;
-
+    String aid;
+    int pid;
+    String agree;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -60,7 +68,17 @@ public class ReqManagerActivity extends AppCompatActivity
         final String pid = String.valueOf(userDto.getPid());
 
         list = (ListView)findViewById(R.id.rm_list);
-        r_list = moyeService.reqMList(Integer.parseInt(pid));
+
+        Intent intent = getIntent();
+//        if(!intent.equals(NULL)){
+//            aid = intent.getExtras().getString("aid");
+//            agree = intent.getExtras().getString("agree");
+//            r_list = moyeService.reqMList(Integer.parseInt(pid), agree, aid);
+//        }
+//        else {
+//            r_list = moyeService.reqMList(Integer.parseInt(pid), "", "");
+//        }
+        r_list = moyeService.reqMList(Integer.parseInt(pid), "", "");
         r_list.enqueue(new Callback<reqManagerDto>() {
             @Override
             public void onResponse(Call<reqManagerDto> call, Response<reqManagerDto> response) {
@@ -73,6 +91,23 @@ public class ReqManagerActivity extends AppCompatActivity
             @Override
             public void onFailure(Call<reqManagerDto> call, Throwable t) {
 
+            }
+        });
+
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                TextView aid_view = (TextView)view.findViewById(R.id.aid);
+                String aid = (String)aid_view.getText();
+                TextView content_view = (TextView)view.findViewById(R.id.rm_content);
+                String content = (String)content_view.getText();
+                TextView name_view = (TextView)view.findViewById(R.id.rm_name);
+                String name = (String)name_view.getText();
+                Intent intent = new Intent(getApplicationContext(), reqMPopupActivity.class);
+                intent.putExtra("aid", aid);
+                intent.putExtra("content", content);
+                intent.putExtra("name",name);
+                startActivity(intent);
             }
         });
 
@@ -180,7 +215,8 @@ class ReqManagerAdapter extends BaseAdapter {
         date.setText(src.get(position).getDate());
         TextView aid = (TextView) convertView.findViewById(R.id.aid);
         aid.setText(String.valueOf(src.get(position).getAid()));
-
+        TextView content = (TextView)convertView.findViewById(R.id.rm_content);
+        content.setText(src.get(position).getContent());
         return convertView;
     }
 
