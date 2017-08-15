@@ -26,7 +26,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:baselineAlignBottom="false"
-                android:src="@mipmap/banner_addmoim" />
+                android:src="@mipmap/ic_addmoim" />
 
         </android.support.v7.widget.Toolbar>
 
@@ -40,56 +40,56 @@
         android:paddingTop="@dimen/activity_vertical_margin"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="@dimen/activity_vertical_margin"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/textView2"
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="제목" />
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/activity_vertical_margin"
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/edit_moimtitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="7"
-            android:inputType="textPersonName" />
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="제목" />
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="투표제한인원" />
+            <EditText
+                android:id="@+id/edit_moimtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="7"
+                android:inputType="textPersonName" />
 
-        <EditText
-            android:id="@+id/edit_limitnum"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="7"
-            android:inputType="number" />
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="투표제한인원" />
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="설명" />
+            <EditText
+                android:id="@+id/edit_limitnum"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="7"
+                android:inputType="number" />
 
-        <EditText
-            android:id="@+id/edit_content"
-            android:layout_width="374dp"
-            android:layout_height="303dp"
-            android:ems="7"
-            android:inputType="textMultiLine" />
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="설명" />
 
-        <Button
-            android:id="@+id/button_add"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="등록" />
-    </LinearLayout>
+            <EditText
+                android:id="@+id/edit_content"
+                android:layout_width="374dp"
+                android:layout_height="303dp"
+                android:ems="7"
+                android:inputType="textMultiLine" />
+
+            <Button
+                android:id="@+id/button_add"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="등록" />
+        </LinearLayout>
     </RelativeLayout>
 </android.support.design.widget.CoordinatorLayout>

@@ -33,6 +33,7 @@
         <activity android:name=".activity.MsDetailActivity" android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".activity.SrListActivity" android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".activity.StudyDetailActivity" android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".activity.SendIntroActivity" android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".activity.StudyRegiActivity"/>
         <activity android:name=".activity.InformPopupActivity" android:theme="@android:style/Theme.DeviceDefault.Light.Dialog"/>
         <activity android:name=".activity.ReqManagerActivity" android:theme="@style/AppTheme.NoActionBar"/>

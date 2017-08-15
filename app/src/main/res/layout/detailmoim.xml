@@ -26,7 +26,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:baselineAlignBottom="false"
-                android:src="@mipmap/banner_mystd" />
+                android:src="@mipmap/ic_mystd" />
 
         </android.support.v7.widget.Toolbar>
 
@@ -37,118 +37,134 @@
         android:id="@+id/content_main_sr"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true">
-
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:orientation="vertical"
-            android:weightSum="1">
-
-            <TextView
-                android:id="@+id/text_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="제목"
-                android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                android:textStyle="bold" />
+            android:fillViewport="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_height="match_parent"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical"
                 android:weightSum="1">
 
                 <TextView
-                    android:id="@+id/text_user"
+                    android:id="@+id/text_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.7"
-                    android:text="글쓴이" />
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="@dimen/activity_horizontal_margin"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/colorAccent"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:id="@+id/text_user"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@mipmap/student"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="0.7" />
+
+                    <TextView
+                        android:id="@+id/text_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@mipmap/clock"
+                        android:layout_marginLeft="120dp" />
+
+                </LinearLayout>
+
+                <!--<View
+            android:background="#747474"
+            android:layout_width="match_parent"
+            android:layout_height="2px"/>-->
 
                 <TextView
-                    android:id="@+id/text_date"
+                    android:id="@+id/text_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_weight="0.38"
+                    android:background="#FFFFFF"
+                    android:paddingBottom="@dimen/activity_vertical_margin"
+                    android:paddingLeft="@dimen/activity_horizontal_margin"
+                    android:paddingRight="@dimen/activity_horizontal_margin"
+                    android:paddingTop="@dimen/activity_vertical_margin"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/Black" />
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="날짜" />
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btn_agree"
+                        android:layout_width="160dp"
+                        android:layout_height="wrap_content"
+                        android:text="찬성" />
+
+
+                    <Button
+                        android:id="@+id/btn_disagree"
+                        android:layout_width="160dp"
+                        android:layout_height="wrap_content"
+                        android:text="반대" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="39dp"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <EditText
+                        android:id="@+id/edit_comment"
+                        android:layout_width="270dp"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:inputType="text" />
+
+                    <Button
+                        android:id="@+id/btn_addcomment"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:text="등록" />
+
+                </LinearLayout>
+
+                <ListView
+                    android:id="@+id/text_comment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="TextView" />
 
             </LinearLayout>
-
-            <!--<View
-        android:background="#747474"
-        android:layout_width="match_parent"
-        android:layout_height="2px"/>-->
-
-            <TextView
-                android:id="@+id/text_detail"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_weight="0.38"
-                android:background="#FFFFFF"
-                android:text="내용"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="@color/Black" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/btn_agree"
-                    android:layout_width="180dp"
-                    android:layout_height="wrap_content"
-                    android:text="찬성" />
-
-
-                <Button
-                    android:id="@+id/btn_disagree"
-                    android:layout_width="180dp"
-                    android:layout_height="wrap_content"
-                    android:text="반대" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="39dp"
-                android:orientation="horizontal"
-                android:weightSum="1">
-
-                <EditText
-                    android:id="@+id/edit_comment"
-                    android:layout_width="300dp"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="text" />
-
-                <Button
-                    android:id="@+id/btn_addcomment"
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:text="등록" />
-
-            </LinearLayout>
-
-            <ListView
-                android:id="@+id/text_comment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
-
-        </LinearLayout>
-    </ScrollView>
+        </ScrollView>
     </RelativeLayout>
 </android.support.design.widget.CoordinatorLayout>

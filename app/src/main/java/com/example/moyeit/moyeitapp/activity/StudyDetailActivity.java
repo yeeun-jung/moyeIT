@@ -88,25 +88,9 @@ public class StudyDetailActivity extends AppCompatActivity {
         joinBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Call<StudyDetailDto> bodyCall = moyeService.StudyJoin(user.getPid(), sid);
-                bodyCall.enqueue(new Callback<StudyDetailDto>() {
-                    @Override
-                    public void onResponse(Call<StudyDetailDto> call, Response<StudyDetailDto> response) {
-                        if (response.body().getState().toString().equals("success")) {
-                            Intent myintent = new Intent(getApplicationContext(), MsDetailActivity.class);
-                            myintent.putExtra("sid", Integer.toString(detail.getSid()));
-                            startActivity(myintent);
-                            //   textView.setText(detail.getSid());
-                        }
-
-
-                    }
-
-                    @Override
-                    public void onFailure(Call<StudyDetailDto> call, Throwable t) {
-
-                    }
-                });
+                Intent myintent = new Intent(getApplicationContext(), SendIntroActivity.class);
+                myintent.putExtra("sid", Integer.toString(detail.getSid()));
+                startActivity(myintent);
             }
         });
 

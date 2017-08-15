@@ -2,6 +2,7 @@ package com.example.moyeit.moyeitapp.Service;
 import com.example.moyeit.moyeitapp.dto.BoardListDto;
 import com.example.moyeit.moyeitapp.dto.BrdDto;
 import com.example.moyeit.moyeitapp.dto.CmoimDto;
+import com.example.moyeit.moyeitapp.dto.JoinDto;
 import com.example.moyeit.moyeitapp.dto.ListDto;
 import com.example.moyeit.moyeitapp.dto.MoimDto;
 import com.example.moyeit.moyeitapp.dto.MsDetailDto;
@@ -80,4 +81,7 @@ public interface MoyeITServerService {
     @GET("request/manager.php")
     Call<reqManagerDto> reqMList(@Query("pid") int id , @Query("agree") String agree, @Query("aid") String aid);
 
+    @FormUrlEncoded
+    @POST("request/register.php")
+    Call<JoinDto> sendintro(@Field("content") String content, @Field("pid") Integer pid, @Field("sid") Integer sid);
 }

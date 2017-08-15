@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.example.moyeit.moyeitapp.activity.BrdAddActivity">
+    tools:context="com.example.moyeit.moyeitapp.activity.SendIntroActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -14,7 +14,7 @@
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar_add_brd"
+            android:id="@+id/toolbar_send_intro"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
@@ -48,26 +48,19 @@
             android:weightSum="1">
 
             <TextView
-                android:id="@+id/text_brdtitle"
+                android:id="@+id/text_introduction"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="제목" />
+                android:drawableLeft="@mipmap/megaphone"
+                android:text="간략하게 자기소개를 작성해주세요" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/colorAccent"/>
 
             <EditText
-                android:id="@+id/edit_brdtitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="text" />
-
-            <TextView
-                android:id="@+id/text_brddetail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="내용" />
-
-            <EditText
-                android:id="@+id/edit_brddetail"
+                android:id="@+id/edit_introduction"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -75,10 +68,10 @@
                 android:layout_weight="0.79" />
 
             <Button
-                android:id="@+id/btn_addbrd"
+                android:id="@+id/btn_sendintro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="등록" />
+                android:text="보내기" />
         </LinearLayout>
     </RelativeLayout>
 </android.support.design.widget.CoordinatorLayout>
