@@ -283,7 +283,10 @@ class SrListViewAdapter extends BaseAdapter {
         }
 
         TextView title = (TextView) convertView.findViewById(R.id.title);
-        title.setText(src.get(position).getTitle());
+        String[] val = src.get(position).getTitle().split("]");
+        title.setText(val[2].replaceAll("\\[",""));
+        TextView region = (TextView)convertView.findViewById(R.id.s_region);
+        region.setText(val[0]+"]"+val[1]+"]");
         TextView nickname = (TextView) convertView.findViewById(R.id.nickname);
         nickname.setText(src.get(position).getNickname());
         TextView contnum = (TextView) convertView.findViewById(R.id.cont_limitnum);

@@ -26,31 +26,17 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="4.31"
-                android:text="제목"
+                android:text="목록"
                 android:textSize="16dp"
                 android:layout_marginLeft="5dp"
-                android:textStyle="bold"/>
+                />
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.89"
-                android:textStyle="bold"
-                android:textSize="16dp"
-                android:text="방장"/>
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textStyle="bold"
-                android:textSize="16dp"
-                android:text="인원"/>
 
         </LinearLayout>
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/transparent"
+            android:layout_height="2dp"
+            android:background="@color/colorAccent"
             android:layout_marginTop="3dp"/>
         <ListView
             android:id="@+id/u_list"

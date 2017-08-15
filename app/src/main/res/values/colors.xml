@@ -6,4 +6,5 @@
     <color name="colorpopbg">#fce096</color>
     <color name="Black">#000000</color>
     <color name="transparent">#1A000000</color>
+    <color name="colorLigntBlack">#999999</color>
 </resources>
