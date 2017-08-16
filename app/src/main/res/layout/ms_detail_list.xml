@@ -4,41 +4,90 @@
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/activity_horizontal_margin"
     android:orientation="horizontal"
-    android:padding="9dp">
-
-    <TextView
-        android:id="@+id/ms_detail_no"
+    android:padding="8dp">
+    <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="0.77"
-        android:textSize="14dp"
-        />
+        android:layout_weight="6"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/ms_detail_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            />
 
-    <TextView
-        android:id="@+id/ms_detail_title"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="2.68"
-        android:textSize="14dp"/>
+        <TextView
+            android:id="@+id/ms_detail_title"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2.68"
+            android:textStyle="bold"
+            android:textSize="16dp"/>
 
-    <TextView
-        android:id="@+id/ms_detail_num"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1.02"
-        android:textSize="14dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="3dp"
+            android:layout_weight="1.5">
 
-    <TextView
-        android:id="@+id/ms_detail_user"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.93"
-        android:textSize="14dp" />
 
-    <TextView
-        android:id="@+id/ms_detail_date"
+            <TextView
+                android:id="@+id/ms_detail_user"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:textColor="@color/colorLigntBlack"
+                android:layout_marginRight="2dp"
+                android:textSize="11dp" />
+
+            <TextView
+                android:id="@+id/ms_detail_date"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:textColor="@color/colorLigntBlack"
+                android:textSize="11dp"
+                android:layout_marginRight="140dp"/>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="2.03"
-        android:textSize="14dp"/>
+        android:layout_height="match_parent"
+        android:layout_weight="1.5"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.8"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.3"
+                android:src="@mipmap/like"
+                android:layout_marginRight="3dp"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="투표 현황"
+                android:textSize="11dp"
+                android:gravity="center"
+                />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/ms_detail_num"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:layout_marginLeft="3dp"
+            android:gravity="center"
+            android:textSize="15dp"/>
+    </LinearLayout>
+
+
 </LinearLayout>

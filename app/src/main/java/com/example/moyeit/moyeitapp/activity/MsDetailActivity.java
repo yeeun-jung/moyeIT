@@ -291,7 +291,7 @@ class msDetailListViewAdapter extends BaseAdapter {
         }
 
         TextView no = (TextView) convertView.findViewById(R.id.ms_detail_no);
-        no.setText(String.valueOf(src.size() - position));
+        no.setText(src.get(position).getNo());
         TextView title = (TextView) convertView.findViewById(R.id.ms_detail_title);
         title.setText(src.get(position).getMoimtitle());
         TextView num = (TextView) convertView.findViewById(R.id.ms_detail_num);

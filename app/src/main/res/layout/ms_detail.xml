@@ -96,58 +96,58 @@
                             android:layout_width="match_parent"
                             android:layout_height="2dp"
                             android:background="@color/colorAccent"/>
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_marginTop="5dp">
+                        <!--<LinearLayout-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:orientation="horizontal"-->
+                            <!--android:layout_marginTop="5dp">-->
 
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="0.85"
-                                android:textStyle="bold"
-                                android:textSize="16dp"
-                                android:text="\n번호" />
+                            <!--<TextView-->
+                                <!--android:layout_width="0dp"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_weight="0.85"-->
+                                <!--android:textStyle="bold"-->
+                                <!--android:textSize="16dp"-->
+                                <!--android:text="\n번호" />-->
 
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="2.67"
-                                android:textStyle="bold"
-                                android:textSize="16dp"
-                                android:text="\n제목" />
+                            <!--<TextView-->
+                                <!--android:layout_width="0dp"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_weight="2.67"-->
+                                <!--android:textStyle="bold"-->
+                                <!--android:textSize="16dp"-->
+                                <!--android:text="\n제목" />-->
 
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="0.92"
-                                android:textStyle="bold"
-                                android:textSize="16dp"
-                                android:text="투표\n현황" />
+                            <!--<TextView-->
+                                <!--android:layout_width="0dp"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_weight="0.92"-->
+                                <!--android:textStyle="bold"-->
+                                <!--android:textSize="16dp"-->
+                                <!--android:text="투표\n현황" />-->
 
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1.12"
-                                android:textStyle="bold"
-                                android:textSize="16dp"
-                                android:text="\n작성자" />
+                            <!--<TextView-->
+                                <!--android:layout_width="0dp"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_weight="1.12"-->
+                                <!--android:textStyle="bold"-->
+                                <!--android:textSize="16dp"-->
+                                <!--android:text="\n작성자" />-->
 
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="2.07"
-                                android:textStyle="bold"
-                                android:textSize="16dp"
-                                android:text="\n날짜" />
-                        </LinearLayout>
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:background="@color/transparent"
-                            android:layout_marginTop="3dp"
-                            />
+                            <!--<TextView-->
+                                <!--android:layout_width="0dp"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_weight="2.07"-->
+                                <!--android:textStyle="bold"-->
+                                <!--android:textSize="16dp"-->
+                                <!--android:text="\n날짜" />-->
+                        <!--</LinearLayout>-->
+                        <!--<View-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="1dp"-->
+                            <!--android:background="@color/transparent"-->
+                            <!--android:layout_marginTop="3dp"-->
+                            <!--/>-->
                         <ListView
                             android:id="@+id/detail_list"
                             android:layout_width="match_parent"
@@ -163,50 +163,50 @@
                             android:layout_width="match_parent"
                             android:layout_height="2dp"
                             android:background="@color/colorAccent"/>
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_marginTop="15dp">
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:textStyle="bold"
-                                android:layout_weight="0.9"
-                                android:textSize="16dp"
-                                android:text="번호" />
+                        <!--<LinearLayout-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:orientation="horizontal"-->
+                            <!--android:layout_marginTop="15dp">-->
+                            <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:layout_width="0dp"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:textStyle="bold"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:layout_weight="0.9"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:textSize="16dp"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:text="번호" />&ndash;&gt;-->
 
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:textStyle="bold"
-                                android:layout_weight="3.9"
-                                android:textSize="16dp"
-                                android:text="제목" />
+                            <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:layout_width="0dp"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:textStyle="bold"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:layout_weight="3.9"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:textSize="16dp"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:text="제목" />&ndash;&gt;-->
 
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:textStyle="bold"
-                                android:layout_weight="2.65"
-                                android:textSize="16dp"
-                                android:text="날짜" />
+                            <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:layout_width="0dp"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:textStyle="bold"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:layout_weight="2.65"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:textSize="16dp"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:text="날짜" />&ndash;&gt;-->
 
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:textStyle="bold"
-                                android:layout_weight="1.66"
-                                android:textSize="16dp"
-                                android:text="작성자" />
+                            <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:layout_width="0dp"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:textStyle="bold"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:layout_weight="1.66"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:textSize="16dp"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:text="작성자" />&ndash;&gt;-->
 
 
-                        </LinearLayout>
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:background="@color/transparent"
-                            android:layout_marginTop="3dp"/>
+                        <!--</LinearLayout>-->
+                        <!--<View-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="1dp"-->
+                            <!--android:background="@color/transparent"-->
+                            <!--android:layout_marginTop="3dp"/>-->
 
                         <ListView
                             android:id="@+id/board_list"

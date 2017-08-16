@@ -3,44 +3,61 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="@dimen/activity_horizontal_margin"
-    android:orientation="horizontal"
-    android:padding="9dp">
-
-    <TextView
-        android:id="@+id/bd_detail_no"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.82"
-        android:textSize="14dp"
-       />
-
-    <TextView
-        android:id="@+id/bd_detail_title"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:textSize="14dp"
-        android:layout_weight="3.75"
-       />
-
-    <TextView
-        android:id="@+id/bd_detail_date"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="2.65"
-        android:textSize="14dp" />
+    android:orientation="vertical"
+    android:padding="8dp">
 
 
-    <TextView
-        android:id="@+id/bd_detail_name"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:textSize="14dp"
-        android:layout_weight="1.31" />
 
-    <TextView
-        android:id="@+id/bd_detail_bid"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone" />
+        <TextView
+            android:id="@+id/bd_detail_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            />
+
+        <TextView
+            android:id="@+id/bd_detail_title"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:layout_weight="3.75"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:layout_marginTop="3dp"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/bd_detail_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="11dp"
+                android:layout_marginRight="2dp"
+                android:textColor="@color/colorLigntBlack"
+                android:layout_weight="0.8"
+                />
+
+            <TextView
+                android:id="@+id/bd_detail_date"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:textColor="@color/colorLigntBlack"
+                android:textSize="11dp"
+                android:layout_marginRight="180dp"/>
+
+
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/bd_detail_bid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
 
 </LinearLayout>
