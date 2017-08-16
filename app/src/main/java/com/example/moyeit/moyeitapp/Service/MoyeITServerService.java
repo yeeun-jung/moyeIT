@@ -66,7 +66,7 @@ public interface MoyeITServerService {
     Call<SrListDto> srList(@Query("search[]") String[] search, @Query("pid") int id);
 
     @GET("study/detail.php")
-    Call<StudyDetailDto> getStudyDetail(@Query("sid") int sid);
+    Call<StudyDetailDto> getStudyDetail(@Query("sid") int sid, @Query("pid") int pid);
 
     @GET("study/join.php")
     Call<StudyDetailDto>StudyJoin(@Query("pid") int pid, @Query("sid") int sid);

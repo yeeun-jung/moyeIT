@@ -28,6 +28,7 @@ public class InformPopupActivity extends Activity implements View.OnClickListene
     public MoyeITServerService moyeService;
     private int sid;
     private TextView textViewTitle, textViewConts;
+    public UserDto userDto;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,9 +39,11 @@ public class InformPopupActivity extends Activity implements View.OnClickListene
 
         moyeClient = new MoyeITServerClient(getApplicationContext());
         moyeService = moyeClient.getMoyeITService();
+        userDto=UserDto.getInstance();
+
         Intent intent = getIntent();
         sid = Integer.parseInt(intent.getExtras().getString("sid"));
-        Call<StudyDetailDto> callUserInfo = moyeService.getStudyDetail(sid);
+        Call<StudyDetailDto> callUserInfo = moyeService.getStudyDetail(sid,userDto.getPid());
 
         callUserInfo.enqueue(new Callback<StudyDetailDto>() {
             @Override

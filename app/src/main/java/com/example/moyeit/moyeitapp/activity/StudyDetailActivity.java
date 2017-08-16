@@ -57,27 +57,31 @@ public class StudyDetailActivity extends AppCompatActivity {
 
         detail = new StudyDetailDto();
         detail.setSid(sid);
-        Call<StudyDetailDto> callStudyDetail = moyeService.getStudyDetail(sid);
+        Call<StudyDetailDto> callStudyDetail = moyeService.getStudyDetail(sid, user.getPid());
 
         callStudyDetail.enqueue(new Callback<StudyDetailDto>() {
             @Override
             public void onResponse(Call<StudyDetailDto> call, Response<StudyDetailDto> response) {
-                String[] val=response.body().getTitle().toString().trim().split("]");
+                String[] val = response.body().getTitle().toString().trim().split("]");
                 studyTitle.setText(val[2]);
                 textView.setText("- 방장 닉네임: " + response.body().getNickname());
                 textView.append("\n- 상세내용: " + response.body().getDetail());
                 textView.append("\n- 제한인원: " + response.body().getLimitnum());
-                textView.append("\n- 현재인원: " + response.body().getContnum()+"\n- 지역: "+val[0].replaceAll("\\[","")+"\n- 분야: "+val[1].replaceAll("\\[",""));
-                if (response.body().getLimitnum() > response.body().getContnum()) {
+                textView.append("\n- 현재인원: " + response.body().getContnum() + "\n- 지역: " + val[0].replaceAll("\\[", "") + "\n- 분야: " + val[1].replaceAll("\\[", ""));
+                if (response.body().getState().toString().equals("already")) {
+                    joinBtn.setEnabled(false);
+                    joinBtn.setText("이미 승인 요청하였습니다.");
+
+                }else if (response.body().getLimitnum() > response.body().getContnum()) {
                     joinBtn.setEnabled(true);
                     joinBtn.setText("참여하기");
-                } else {
+                }  else {
                     joinBtn.setEnabled(false);
                     joinBtn.setText("마감되었습니다");
 
                 }
-
             }
+
 
             @Override
             public void onFailure(Call<StudyDetailDto> call, Throwable t) {
@@ -98,11 +102,12 @@ public class StudyDetailActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_study_detail);
         setSupportActionBar(toolbar);
-        ActionBar actionBar =getSupportActionBar();
+        ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeAsUpIndicator(R.mipmap.noun_back);
 
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

@@ -90,7 +90,7 @@ public class LoginActivity extends AppCompatActivity {
                                 userDto.setRegion(response.body().getRegion());
                                 TOKEN=true;
                                 Toast.makeText(LoginActivity.this, response.body().getNickname() + "님, 안녕하세요.", Toast.LENGTH_SHORT).show();
-
+                                login(TOKEN);
 
                             } else if (!response.body().getPwd().equals(editPwdValue)) {
                                 Toast.makeText(LoginActivity.this, "아이디와 비밀번호를 확인해주세요.", Toast.LENGTH_SHORT).show();
@@ -100,7 +100,7 @@ public class LoginActivity extends AppCompatActivity {
                                 userDto.setEmail("");
                                 userDto.setNickname("");
                             }
-                            login(TOKEN);
+
 
 
                         }
