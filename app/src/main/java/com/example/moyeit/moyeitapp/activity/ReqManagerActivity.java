@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -52,9 +53,7 @@ public class ReqManagerActivity extends AppCompatActivity
     ArrayList<reqManagerDtlDto> dtl_list;
     ReqManagerAdapter adapter;
     ListView list;
-    String aid;
-    int pid;
-    String agree;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -69,15 +68,7 @@ public class ReqManagerActivity extends AppCompatActivity
 
         list = (ListView)findViewById(R.id.rm_list);
 
-        Intent intent = getIntent();
-//        if(!intent.equals(NULL)){
-//            aid = intent.getExtras().getString("aid");
-//            agree = intent.getExtras().getString("agree");
-//            r_list = moyeService.reqMList(Integer.parseInt(pid), agree, aid);
-//        }
-//        else {
-//            r_list = moyeService.reqMList(Integer.parseInt(pid), "", "");
-//        }
+
         r_list = moyeService.reqMList(Integer.parseInt(pid), "", "");
         r_list.enqueue(new Callback<reqManagerDto>() {
             @Override
@@ -94,22 +85,6 @@ public class ReqManagerActivity extends AppCompatActivity
             }
         });
 
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                TextView aid_view = (TextView)view.findViewById(R.id.aid);
-                String aid = (String)aid_view.getText();
-                TextView content_view = (TextView)view.findViewById(R.id.rm_content);
-                String content = (String)content_view.getText();
-                TextView name_view = (TextView)view.findViewById(R.id.rm_name);
-                String name = (String)name_view.getText();
-                Intent intent = new Intent(getApplicationContext(), reqMPopupActivity.class);
-                intent.putExtra("aid", aid);
-                intent.putExtra("content", content);
-                intent.putExtra("name",name);
-                startActivity(intent);
-            }
-        });
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar2);
         setSupportActionBar(toolbar);
@@ -172,10 +147,13 @@ public class ReqManagerActivity extends AppCompatActivity
 }
 
 
-class ReqManagerAdapter extends BaseAdapter {
+class ReqManagerAdapter extends BaseAdapter{
     Context maincon;
     LayoutInflater Inflater;
     ArrayList<reqManagerDtlDto> src;
+    String s_name;
+    String s_aid;
+    String s_content;
     int layout;
 
     public ReqManagerAdapter(Context context, int alayout, ArrayList<reqManagerDtlDto> asrc) {
@@ -203,12 +181,16 @@ class ReqManagerAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         final int pos = position;
+
         if (convertView == null) {
             convertView = Inflater.inflate(layout, parent, false);
         }
 
         TextView title = (TextView) convertView.findViewById(R.id.rm_title);
-        title.setText(src.get(position).getTitle());
+        String[] val = src.get(position).getTitle().split("]");
+        title.setText(val[2].replaceAll("\\[",""));
+        TextView region = (TextView)convertView.findViewById(R.id.rm_region);
+        region.setText(val[0]+"]"+val[1]+"]");
         TextView nickname = (TextView) convertView.findViewById(R.id.rm_name);
         nickname.setText(src.get(position).getNickname());
         TextView date = (TextView) convertView.findViewById(R.id.rm_date);
@@ -217,6 +199,21 @@ class ReqManagerAdapter extends BaseAdapter {
         aid.setText(String.valueOf(src.get(position).getAid()));
         TextView content = (TextView)convertView.findViewById(R.id.rm_content);
         content.setText(src.get(position).getContent());
+        ImageButton dtl_Btn = (ImageButton)convertView.findViewById(R.id.dtl_Btn);
+        dtl_Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(maincon, reqMPopupActivity.class);
+                s_name= src.get(pos).getNickname();
+                s_aid= src.get(pos).getAid();
+                s_content= src.get(pos).getContent();
+                intent.putExtra("aid", s_aid);
+                intent.putExtra("content", s_content);
+                intent.putExtra("name", s_name);
+                maincon.startActivity(intent);
+            }
+        });
+
         return convertView;
     }
 
