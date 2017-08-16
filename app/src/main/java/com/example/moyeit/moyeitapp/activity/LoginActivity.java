@@ -17,6 +17,8 @@ import com.example.moyeit.moyeitapp.Network.MoyeITServerClient;
 import com.example.moyeit.moyeitapp.R;
 import com.example.moyeit.moyeitapp.Service.MoyeITServerService;
 import com.example.moyeit.moyeitapp.dto.UserDto;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.gson.Gson;
 
 import retrofit2.Call;
@@ -36,13 +38,14 @@ public class LoginActivity extends AppCompatActivity {
     public UserDto userDto;
     public MoyeITServerClient moyeClient;
     public MoyeITServerService moyeService;
+    private Boolean TOKEN;
 
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.login);
-
+        //       userDto.setToken(FirebaseInstanceId.getInstance().getToken().toString());
         editId = (AutoCompleteTextView) findViewById(R.id.editText_id);
         editPwd = (EditText) findViewById(R.id.editText_pwd);
         loginBtn = (Button) findViewById(R.id.buttonlogin);
@@ -51,6 +54,7 @@ public class LoginActivity extends AppCompatActivity {
         moyeService = moyeClient.getMoyeITService();
 
         userDto = UserDto.getInstance();
+        TOKEN=false;
 
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
@@ -84,9 +88,10 @@ public class LoginActivity extends AppCompatActivity {
                                 userDto.setNickname(response.body().getNickname());
                                 userDto.setPid(response.body().getPid());
                                 userDto.setRegion(response.body().getRegion());
+                                TOKEN=true;
                                 Toast.makeText(LoginActivity.this, response.body().getNickname() + "님, 안녕하세요.", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(getApplicationContext(), MsMainActivity.class);
-                                startActivity(intent);
+
+
                             } else if (!response.body().getPwd().equals(editPwdValue)) {
                                 Toast.makeText(LoginActivity.this, "아이디와 비밀번호를 확인해주세요.", Toast.LENGTH_SHORT).show();
                                 userDto.setRegion(0);
@@ -95,6 +100,7 @@ public class LoginActivity extends AppCompatActivity {
                                 userDto.setEmail("");
                                 userDto.setNickname("");
                             }
+                            login(TOKEN);
 
 
                         }
@@ -110,6 +116,31 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
+
+
+    }
+
+    public void login(boolean bool) {
+        if(bool){
+            Call<UserDto> callFCM = moyeService.sendFCM(FirebaseInstanceId.getInstance().getToken(), userDto.getPid());
+
+            callFCM.enqueue(new Callback<UserDto>() {
+                @Override
+                public void onResponse(Call<UserDto> call, Response<UserDto> response) {
+
+                }
+
+                @Override
+                public void onFailure(Call<UserDto> call, Throwable t) {
+                    Toast.makeText(LoginActivity.this, "알림에 오류가 있습니다.", Toast.LENGTH_SHORT).show();
+
+                }
+
+
+            });
+            Intent intent = new Intent(getApplicationContext(), MsMainActivity.class);
+            startActivity(intent);
+        }
 
 
     }

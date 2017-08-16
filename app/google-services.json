@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "961130120751",
+    "firebase_url": "https://moyeit-176815.firebaseio.com",
+    "project_id": "moyeit-176815",
+    "storage_bucket": "moyeit-176815.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:961130120751:android:4d3803fc94ece03e",
+        "android_client_info": {
+          "package_name": "com.example.moyeit.moyeitapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "961130120751-ij4d30qd6adt2b01aq93d7o41sicmnup.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgnAE_PqZ-9xibMWkY6SOsuQa5bJZsdQ8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -30,5 +30,7 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.squareup.retrofit2:retrofit:2.1.0' //레트로핏
     compile 'com.squareup.retrofit2:converter-gson:2.1.0' //gson
+    compile 'com.google.firebase:firebase-messaging:9.6.1'
     testCompile 'junit:junit:4.12'
 }
+apply plugin: 'com.google.gms.google-services'

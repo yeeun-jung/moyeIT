@@ -38,6 +38,19 @@
         <activity android:name=".activity.InformPopupActivity" android:theme="@android:style/Theme.DeviceDefault.Light.Dialog"/>
         <activity android:name=".activity.ReqManagerActivity" android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".activity.reqMPopupActivity" android:theme="@android:style/Theme.DeviceDefault.Light.Dialog"/>
+
+        <service
+            android:name=".Service.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <service
+            android:name=".Service.MyFirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

@@ -16,6 +16,24 @@ public class UserDto {
     String  pwd;
     int region;
     String enjoy;
+    String token;
+    String state;
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
 
     public int getPid() {
         return pid;
