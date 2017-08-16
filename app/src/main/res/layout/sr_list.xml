@@ -12,7 +12,6 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.moyeit.moyeitapp.activity.SrListActivity"
     tools:showIn="@layout/app_bar_main_sr">
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -22,11 +21,11 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1.97"
         android:layout_margin="@dimen/activity_vertical_margin"
         android:layout_marginEnd="20dp"
-        android:orientation="vertical"
-        android:layout_weight="1.13">
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -52,9 +51,17 @@
         <ListView
             android:id="@+id/s_srList"
             android:layout_width="match_parent"
-            android:layout_height="372dp">
+            android:layout_height="0dp"
+            android:layout_weight="8">
 
         </ListView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/transparent"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"/>
 
 
 
@@ -68,7 +75,7 @@
             app:srcCompat="@android:drawable/ic_input_add"
             android:layout_marginBottom="@dimen/fab_margin"
             android:layout_alignStart="@+id/linearLayout"
-            android:layout_weight="0.30" />
+            android:layout_weight="0.1" />
     </LinearLayout>
 
 </RelativeLayout>

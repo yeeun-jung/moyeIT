@@ -19,7 +19,6 @@
             android:textSize="11dp"
             android:id="@+id/s_region"
             android:textColor="@color/colorLigntBlack"/>
-            <!--android:textColor="#59cc0099"-->
 
 
         <TextView

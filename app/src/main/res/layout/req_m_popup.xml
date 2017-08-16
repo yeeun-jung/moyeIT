@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="250dp"
-    android:layout_height="400dp"
+    android:layout_width="230dp"
+    android:layout_height="360dp"
     android:layout_gravity="center"
     android:layout_marginBottom="@dimen/activity_vertical_margin"
     android:layout_marginLeft="@dimen/activity_vertical_margin"
@@ -10,21 +10,28 @@
     android:orientation="vertical"
     android:background="@android:color/transparent">
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="6"
+        android:layout_gravity="center"
+        android:src="@mipmap/book"/>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:gravity="center"
-        android:textColor="#000000"
+        android:textStyle="bold"
         android:textSize="20dp"
         android:id="@+id/rmp_name"/>
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_weight="11"
+        android:layout_weight="4"
         android:layout_height="0dp"
-        android:padding="10dp"
-        android:background="@color/colorpopbg"
+        android:padding="11dp"
+        android:textColor="@color/colorLigntBlack"
         android:id="@+id/rmp_content"/>
 
     <TextView
@@ -34,19 +41,29 @@
         android:visibility="gone"/>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1.5"
         >
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="승인"
             android:layout_weight="1"
+            android:padding="3dp"
+            android:textSize="13dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/button_style"
             android:id="@+id/appBtn"/>
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:padding="3dp"
             android:text="거절"
+            android:textSize="13dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/button_style"
             android:id="@+id/rejBtn"/>
     </LinearLayout>
 </LinearLayout>
