@@ -32,6 +32,7 @@ public class StudyDetailActivity extends AppCompatActivity {
     private Button joinBtn;
     private TextView textView, studyTitle;
     private UserDto user;
+    private BackButtonExit backButtonExit;
     String join;
     public MoyeITServerClient moyeClient;
     public MoyeITServerService moyeService;
@@ -54,6 +55,8 @@ public class StudyDetailActivity extends AppCompatActivity {
 
         moyeClient = new MoyeITServerClient(getApplicationContext());
         moyeService = moyeClient.getMoyeITService();
+
+        backButtonExit = new BackButtonExit(this);
 
         detail = new StudyDetailDto();
         detail.setSid(sid);
@@ -106,6 +109,10 @@ public class StudyDetailActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeAsUpIndicator(R.mipmap.noun_back);
 
+    }
+    @Override
+    public void onBackPressed() {
+        backButtonExit.onBackPressed();
     }
 
     @Override
