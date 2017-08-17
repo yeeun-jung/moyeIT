@@ -1,11 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:fitsSystemWindows="true"
     android:layout_height="match_parent"
     android:background="#a5e872"
     android:descendantFocusability="beforeDescendants"
+    android:fitsSystemWindows="true"
     android:focusableInTouchMode="true"
     android:gravity="center_vertical|center_horizontal"
     android:orientation="vertical"
@@ -34,9 +35,9 @@
             android:hint="@string/prompt_email"
             android:inputType="textEmailAddress"
             android:maxLines="1"
-            android:textColorHint="#ffffff"
+            android:singleLine="true"
             android:textColor="#ffffff"
-            android:singleLine="true" />
+            android:textColorHint="#ffffff" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -53,16 +54,23 @@
             android:imeOptions="actionUnspecified"
             android:inputType="textPassword"
             android:maxLines="1"
-            android:textColorHint="#ffffff"
+            android:singleLine="true"
             android:textColor="#ffffff"
-            android:singleLine="true" />
+            android:textColorHint="#ffffff" />
     </android.support.design.widget.TextInputLayout>
 
     <Button
         android:id="@+id/buttonlogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="LOGIN"
-        android:background="#ffffff"/>
+        android:background="#ffffff"
+        android:text="LOGIN" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:paddingTop="15dp"
+        android:text="비밀번호찾기 | 회원가입"
+        android:textColor="#7f7f7f" />
 </LinearLayout>

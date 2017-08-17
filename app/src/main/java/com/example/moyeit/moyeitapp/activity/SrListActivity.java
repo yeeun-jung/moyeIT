@@ -229,15 +229,17 @@ public class SrListActivity extends AppCompatActivity
             intent = new Intent(getApplicationContext(),SrListActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_slideshow) {
-
+            intent = new Intent(getApplicationContext(),RankingMainActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_manage) {
-
+            intent = new Intent(getApplicationContext(),LoginActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_share) {
             intent = new Intent(getApplicationContext(),ReqManagerActivity.class);
             startActivity(intent);
-
         } else if (id == R.id.nav_send) {
-
+            intent = new Intent(getApplicationContext(),WaitManagerActivity.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout1);

@@ -51,7 +51,8 @@
                 android:id="@+id/text_brdtitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="제목" />
+                android:text="제목"
+                android:textStyle="bold"/>
 
             <EditText
                 android:id="@+id/edit_brdtitle"
@@ -64,7 +65,8 @@
                 android:id="@+id/text_brddetail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="내용" />
+                android:text="내용"
+                android:textStyle="bold"/>
 
             <EditText
                 android:id="@+id/edit_brddetail"
@@ -78,7 +80,8 @@
                 android:id="@+id/btn_addbrd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="등록" />
+                android:background="@color/colorAccent"
+                android:text="등록하기" />
         </LinearLayout>
     </RelativeLayout>
 </android.support.design.widget.CoordinatorLayout>

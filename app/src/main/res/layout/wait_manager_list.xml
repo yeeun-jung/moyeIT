@@ -1,24 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
     android:layout_margin="@dimen/activity_horizontal_margin"
     android:layout_height="wrap_content"
     android:padding="8dp">
+
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="6"
         android:orientation="vertical">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="3.2"
             android:textSize="10dp"
             android:textColor="@color/colorLigntBlack"
-            android:id="@+id/rm_region"
+            android:id="@+id/wm_region"
             />
+
         <TextView
-            android:id="@+id/rm_title"
+            android:id="@+id/wm_title"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="4.6"
@@ -36,8 +41,9 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.35"
-                android:text="요청자"
-                android:textSize="13dp"
+                android:layout_marginBottom="5dp"
+                android:text="방장"
+                android:textSize="10dp"
                 android:textStyle="bold"
                 android:textColor="@color/colorLigntBlack"/>
 
@@ -48,7 +54,7 @@
                 android:textSize="13dp"
                 android:textStyle="bold"
                 android:textColor="@color/colorLigntBlack"
-                android:id="@+id/rm_name"/>
+                android:id="@+id/wm_name"/>
         </LinearLayout>
 
         <LinearLayout
@@ -62,6 +68,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0.35"
                 android:text="요청날짜 "
+                android:textStyle="bold"
                 android:textColor="@color/colorLigntBlack"
                 android:textSize="10dp"
                 />
@@ -72,30 +79,33 @@
                 android:layout_weight="2"
                 android:textSize="11dp"
                 android:textColor="@color/colorLigntBlack"
-                android:id="@+id/rm_date"/>
+                android:id="@+id/wm_date"/>
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="4"
+            android:layout_marginTop="3dp"
+            android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:id="@+id/aid"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.35"
+                android:text="승인상태"
+                android:textStyle="bold"
+                android:textSize="10dp"
+                android:textColor="@color/colorLigntBlack"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:id="@+id/rm_content"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:textSize="13dp"
+                android:textStyle="bold"
+                android:textColor="@color/colorLigntBlack"
+                android:id="@+id/wm_agree"/>
+        </LinearLayout>
     </LinearLayout>
-
-    <ImageButton
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.83"
-        android:src="@mipmap/more"
-        android:layout_gravity="center"
-        android:id="@+id/dtl_Btn"
-        android:background="@android:color/transparent"/>
-
 </LinearLayout>

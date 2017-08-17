@@ -11,6 +11,7 @@ import com.example.moyeit.moyeitapp.dto.StudyDetailDto;
 import com.example.moyeit.moyeitapp.dto.StudyRegisterDTO;
 import com.example.moyeit.moyeitapp.dto.UserDto;
 import com.example.moyeit.moyeitapp.dto.reqManagerDto;
+import com.example.moyeit.moyeitapp.dto.waitManagerDto;
 
 import retrofit2.Call;
 import retrofit2.http.*;
@@ -89,4 +90,7 @@ public interface MoyeITServerService {
  //   @FormUrlEncoded
     @GET("fcm/register.php")
     Call<UserDto>sendFCM (@Query("token") String token, @Query("pid") int pid);
+
+    @GET("request/staff.php")
+    Call<waitManagerDto> waitMList(@Query("pid") int id);
 }

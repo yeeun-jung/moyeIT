@@ -1,9 +1,11 @@
 package com.example.moyeit.moyeitapp.activity;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -111,6 +113,29 @@ public class MoimAddActivity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void onBackPressed() {
+
+        // TODO Auto-generated method stub
+        // super.onBackPressed(); //지워야 실행됨
+
+        AlertDialog.Builder d = new AlertDialog.Builder(this);
+        d.setMessage("정말 종료하시겠습니까? \n입력한 내용이 삭제됩니다.");
+        d.setPositiveButton("예", new DialogInterface.OnClickListener() {
+
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+            }
+        });
+
+        d.setNegativeButton("아니요", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        d.show();
     }
 }
 

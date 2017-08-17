@@ -18,10 +18,12 @@
         android:layout_height="match_parent"
         android:layout_margin="@dimen/activity_vertical_margin"
         android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -37,14 +39,15 @@
                 android:layout_marginLeft="5dp"
                 android:text="요청목록"/>
 
-
         </LinearLayout>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:background="@color/colorAccent"
             android:layout_marginTop="3dp"
             android:layout_marginBottom="3dp"/>
+
         <ListView
             android:id="@+id/rm_list"
             android:layout_width="match_parent"
