@@ -19,6 +19,7 @@ import com.example.moyeit.moyeitapp.R;
 import com.example.moyeit.moyeitapp.Service.MoyeITServerService;
 import com.example.moyeit.moyeitapp.dto.CmoimDto;
 import com.example.moyeit.moyeitapp.dto.MoimDto;
+import com.example.moyeit.moyeitapp.dto.StudyDetailDto;
 import com.example.moyeit.moyeitapp.dto.UserDto;
 
 import retrofit2.Call;
@@ -84,6 +85,9 @@ public class MoimAddActivity extends AppCompatActivity {
                     callMoimInfo.enqueue(new Callback<MoimDto>() {
                         @Override
                         public void onResponse(Call<MoimDto> call, Response<MoimDto> response) {
+                            Intent intent = new Intent(getApplicationContext(), MsDetailActivity.class);
+                            intent.putExtra("sid", sidvalue);
+                            startActivity(intent);
                         }
                         @Override
                         public void onFailure(Call<MoimDto> call, Throwable t) {

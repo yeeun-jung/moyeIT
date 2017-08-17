@@ -59,8 +59,8 @@ public class MoimDetailActivity extends AppCompatActivity {
     private int limitnum;
     private String nickname;
     private String commentvalue;
-    ArrayList<HashMap<String,String>> arrayList = new ArrayList<HashMap<String,String>>();
-    HashMap<String,String> item;
+    ArrayList<HashMap<String, String>> arrayList = new ArrayList<HashMap<String, String>>();
+    HashMap<String, String> item;
     SimpleAdapter Adapter;
     public UserDto userDto;
     public MoyeITServerClient moyeClient;
@@ -81,12 +81,12 @@ public class MoimDetailActivity extends AppCompatActivity {
         btnaddcomment = (Button) findViewById(R.id.btn_addcomment);
         Adapter = new SimpleAdapter(
                 this, arrayList, android.R.layout.simple_list_item_2,
-                new String[] {"item 1","item 2"},
-                new int[] {android.R.id.text1, android.R.id.text2});
+                new String[]{"item 1", "item 2"},
+                new int[]{android.R.id.text1, android.R.id.text2});
         textComment.setAdapter(Adapter);
         moyeClient = new MoyeITServerClient(getApplicationContext());
         moyeService = moyeClient.getMoyeITService();
-        userDto= UserDto.getInstance();
+        userDto = UserDto.getInstance();
         Intent intent = getIntent();
         sid = intent.getExtras().getString("sid"); //나중에 수정하기(현재 참여하고 들어와 있는 스터디의 id를 받아와야함)
         no = intent.getExtras().getString("no"); //나중에 수정하기(모임게시글 리스트 중 클릭한 게시글의 no를 받아와야함)
@@ -109,8 +109,8 @@ public class MoimDetailActivity extends AppCompatActivity {
                 /*for(int i = 0; i < response.body().getList().size(); i++) {
                     arrayList.add(response.body().getList().get(i).getUser() + " : " + response.body().getList().get(i).getComment());
                 }*/
-                for(int i = 0; i < response.body().getList().size(); i++) {
-                    item = new HashMap<String,String>();
+                for (int i = 0; i < response.body().getList().size(); i++) {
+                    item = new HashMap<String, String>();
                     item.put("item 1", response.body().getList().get(i).getUser() + " : " + response.body().getList().get(i).getComment());
                     item.put("item 2", response.body().getList().get(i).getDatetime());
                     arrayList.add(item);
@@ -119,18 +119,18 @@ public class MoimDetailActivity extends AppCompatActivity {
                 textComment.setAdapter(Adapter);
                 listViewHeightSet(Adapter, textComment); //이 곳에서 리스트뷰 높이 설정
                 textMuser.setText(response.body().getMuser());
-
+                int num = limitnum / 2;
                 votenum = agrnum + disnum;
-                if(votenum >= limitnum){
-                    if(agrnum > disnum){
+                if (votenum > 0) {
+                    if (agrnum > num) {
                         btnagree.setEnabled(false);
                         btndisagree.setEnabled(false);
                         btnagree.setBackgroundColor(getResources().getColor(R.color.colorAccent));
-                    }else if(agrnum < disnum){
+                    } else if (disnum + 1 > num) {
                         btnagree.setEnabled(false);
                         btndisagree.setEnabled(false);
                         btndisagree.setBackgroundColor(getResources().getColor(R.color.colorAccent));
-                    }else if(agrnum == disnum){
+                    } else if (agrnum == disnum && votenum == limitnum) {
                         btnagree.setEnabled(false);
                         btndisagree.setEnabled(false);
                         btnagree.setBackgroundColor(getResources().getColor(R.color.colorAccent));
@@ -138,9 +138,10 @@ public class MoimDetailActivity extends AppCompatActivity {
                     }
                 }
             }
+
             @Override
             public void onFailure(Call<MoimDto> call, Throwable t) {
-                textTitle.setText("실패"+t.toString());
+                textTitle.setText("실패" + t.toString());
             }
         });
         //투표
@@ -156,16 +157,16 @@ public class MoimDetailActivity extends AppCompatActivity {
                 callMoimVoteInfo.enqueue(new Callback<MoimDto>() {
                     @Override
                     public void onResponse(Call<MoimDto> call, Response<MoimDto> response) {
-                        Intent intent = new Intent(getApplicationContext(),MoimDetailActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), MoimDetailActivity.class);
                         // 연주가 만든 액티비티 이름으로 바꾸고 돌리기(테스트는 끝남 no랑 sid 넘겨주는 테스트는 끝남)
                         intent.putExtra("sid", sid);
-                        intent.putExtra("no",no);
+                        intent.putExtra("no", no);
                         startActivity(intent);
                     }
 
                     @Override
                     public void onFailure(Call<MoimDto> call, Throwable t) {
-                        textTitle.setText("실패"+t.toString());
+                        textTitle.setText("실패" + t.toString());
                     }
                 });
             }
@@ -182,16 +183,16 @@ public class MoimDetailActivity extends AppCompatActivity {
                 callMoimVoteInfo.enqueue(new Callback<MoimDto>() {
                     @Override
                     public void onResponse(Call<MoimDto> call, Response<MoimDto> response) {
-                        Intent intent = new Intent(getApplicationContext(),MoimDetailActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), MoimDetailActivity.class);
                         // 연주가 만든 액티비티 이름으로 바꾸고 돌리기(테스트는 끝남 no랑 sid 넘겨주는 테스트는 끝남)
                         intent.putExtra("sid", sid);
-                        intent.putExtra("no",no);
+                        intent.putExtra("no", no);
                         startActivity(intent);
                     }
 
                     @Override
                     public void onFailure(Call<MoimDto> call, Throwable t) {
-                        textTitle.setText("실패"+t.toString());
+                        textTitle.setText("실패" + t.toString());
                     }
                 });
             }
@@ -206,25 +207,25 @@ public class MoimDetailActivity extends AppCompatActivity {
                 commentvalue = editComment.getText().toString();
                 nickname = userDto.getNickname();
 
-                if(commentvalue.equals("")){
+                if (commentvalue.equals("")) {
                     Toast.makeText(MoimDetailActivity.this, "내용을 입력해주세요.", Toast.LENGTH_SHORT).show();
                     return;
-                }else {
+                } else {
                     Call<CmoimDto> callMoimCommentInfo = moyeService.commentmoim(nickname, commentvalue, mid);
 
                     callMoimCommentInfo.enqueue(new Callback<CmoimDto>() {
                         @Override
                         public void onResponse(Call<CmoimDto> call, Response<CmoimDto> response) {
-                            Intent intent = new Intent(getApplicationContext(),MoimDetailActivity.class);
+                            Intent intent = new Intent(getApplicationContext(), MoimDetailActivity.class);
                             // 연주가 만든 액티비티 이름으로 바꾸고 돌리기(테스트는 끝남 no랑 sid 넘겨주는 테스트는 끝남)
                             intent.putExtra("sid", sid);
-                            intent.putExtra("no",no);
+                            intent.putExtra("no", no);
                             startActivity(intent);
                         }
 
                         @Override
                         public void onFailure(Call<CmoimDto> call, Throwable t) {
-                            textTitle.setText("실패"+t.toString());
+                            textTitle.setText("실패" + t.toString());
                         }
                     });
                 }
@@ -233,7 +234,7 @@ public class MoimDetailActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_detail_moim);
         setSupportActionBar(toolbar);
-        ActionBar actionBar =getSupportActionBar();
+        ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeAsUpIndicator(R.mipmap.noun_back);
     }
@@ -249,11 +250,11 @@ public class MoimDetailActivity extends AppCompatActivity {
     }
 
     //리스트뷰 아이템 개수만큼 높이 동적으로 조정하는 곳
-    private void listViewHeightSet(android.widget.Adapter listAdapter, ListView listview){
+    private void listViewHeightSet(android.widget.Adapter listAdapter, ListView listview) {
         int totalHeight = 0;
-        for(int i = 0; i < listAdapter.getCount(); i++){
+        for (int i = 0; i < listAdapter.getCount(); i++) {
             View listItem = listAdapter.getView(i, null, listview);
-            listItem.measure(0,0);
+            listItem.measure(0, 0);
             totalHeight += listItem.getMeasuredHeight();
         }
         ViewGroup.LayoutParams params = listview.getLayoutParams();
