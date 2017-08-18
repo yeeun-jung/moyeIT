@@ -63,7 +63,7 @@
         android:id="@+id/buttonlogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#ffffff"
+        android:background="@drawable/round_style"
         android:text="LOGIN" />
 
     <TextView

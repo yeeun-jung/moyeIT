@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/popup_element"
-    android:layout_width="250dp"
+    android:layout_width="230dp"
     android:layout_height="400dp"
     android:layout_gravity="center"
     android:layout_marginBottom="@dimen/activity_vertical_margin"
@@ -22,16 +22,17 @@
 
     <TextView
         android:id="@+id/textView_inform_contents"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:background="@color/colorpopbg"
+        android:layout_width="230dp"
+        android:layout_height="292dp"
+        android:background="@drawable/popup_round"
         android:gravity="left"
         android:padding="10dp" />
 
     <Button
         android:id="@+id/button_close"
-        android:layout_width="match_parent"
+        android:layout_width="218dp"
+        android:layout_margin="6dp"
         android:layout_height="wrap_content"
+        android:background="@drawable/button_style"
         android:text="닫기" />
 </LinearLayout>
