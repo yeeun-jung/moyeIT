@@ -26,7 +26,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:baselineAlignBottom="false"
-                android:src="@mipmap/ic_mystd" />
+                android:src="@mipmap/ic_moyeit_logo" />
 
         </android.support.v7.widget.Toolbar>
 

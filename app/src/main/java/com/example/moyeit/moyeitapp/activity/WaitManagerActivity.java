@@ -174,18 +174,30 @@ class WaitManagerAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         final int pos = position;
+
         if (convertView == null) {
             convertView = Inflater.inflate(layout, parent, false);
         }
 
         TextView title = (TextView) convertView.findViewById(R.id.wm_title);
-        title.setText(src.get(position).getTitle());
+        String[] val = src.get(position).getTitle().split("]");
+        title.setText(val[2].replaceAll("\\[",""));
+        TextView region = (TextView)convertView.findViewById(R.id.wm_region);
+        region.setText(val[0]+"]"+val[1]+"]");
+        /*TextView title = (TextView) convertView.findViewById(R.id.wm_title);
+        title.setText(src.get(position).getTitle());*/
         TextView nickname = (TextView) convertView.findViewById(R.id.wm_name);
         nickname.setText(src.get(position).getNickname());
         TextView date = (TextView) convertView.findViewById(R.id.wm_date);
         date.setText(src.get(position).getDate());
         TextView agree = (TextView) convertView.findViewById(R.id.wm_agree);
-        agree.setText(src.get(position).getAgree());
+        if(src.get(position).getAgree() == ""){
+            agree.setText("대기중");
+        }else if(src.get(position).getAgree() == "true") {
+            agree.setText("수락");
+        }else{
+            agree.setText("거절");
+        }
         return convertView;
     }
 }

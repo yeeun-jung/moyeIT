@@ -3,6 +3,23 @@
 
     <group android:checkableBehavior="single">
 
+        <item android:title="My Page">
+            <menu>
+                <item
+                    android:id="@+id/nav_camera"
+                    android:icon="@mipmap/noun_box"
+                    android:title="My Study" />
+                <item
+                    android:id="@+id/nav_share"
+                    android:icon="@mipmap/noun_stamp"
+                    android:title="승인하기" />
+                <item
+                    android:id="@+id/nav_send"
+                    android:icon="@mipmap/noun_paper"
+                    android:title="승인대기" />
+            </menu>
+        </item>
+
         <item
             android:id="@+id/nav_gallery"
             android:icon="@mipmap/noun_search"
@@ -17,21 +34,6 @@
             android:title="Log Out" />
     </group>
 
-    <item android:title="My Page">
-        <menu>
-            <item
-                android:id="@+id/nav_camera"
-                android:icon="@mipmap/noun_box"
-                android:title="My Study" />
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@mipmap/noun_stamp"
-                android:title="승인하기" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@mipmap/noun_paper"
-                android:title="승인대기" />
-        </menu>
-    </item>
+
 
 </menu>

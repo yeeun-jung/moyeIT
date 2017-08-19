@@ -42,7 +42,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0.35"
                 android:text="방장"
-                android:textSize="10dp"
+                android:textSize="13dp"
                 android:textStyle="bold"
                 android:textColor="@color/colorLigntBlack"/>
 
@@ -50,7 +50,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
-                android:textSize="12dp"
+                android:textSize="13dp"
                 android:textColor="@color/colorLigntBlack"
                 android:id="@+id/wm_name"/>
         </LinearLayout>
@@ -84,24 +84,23 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="4"
-            android:layout_marginTop="3dp"
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/textView5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.35"
                 android:text="승인상태"
-                android:textStyle="bold"
-                android:textSize="11dp"
-                android:textColor="@color/colorLigntBlack"/>
+                android:textColor="@color/colorLigntBlack"
+                android:textSize="10dp"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
-                android:textSize="13dp"
-                android:textStyle="bold"
+                android:textSize="10dp"
                 android:textColor="@color/colorLigntBlack"
                 android:id="@+id/wm_agree"/>
         </LinearLayout>
