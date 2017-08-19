@@ -50,10 +50,14 @@ public class InformPopupActivity extends Activity implements View.OnClickListene
             public void onResponse(Call<StudyDetailDto> call, Response<StudyDetailDto> response) {
                 String[] val=response.body().getTitle().toString().trim().split("]");
                 textViewTitle.setText(val[2]);
-                textViewConts.setText("- 방장 닉네임: " + response.body().getNickname());
+                textViewConts.setText("◙ 방장 닉네임: " + response.body().getNickname() +"\n");
+                textViewConts.append("\n◙ 분야: " + val[1].replaceAll("\\[", "") + "\n\n◙ 지역: " + val[0].replaceAll("\\[", "")+"\n");
+                textViewConts.append("\n◙ 현재인원: " + response.body().getContnum() + "\n\n◙ 제한인원: " + response.body().getLimitnum()+"\n");
+                textViewConts.append("\n◙ 상세내용: \n" + response.body().getDetail());
+                /*textViewConts.setText("- 방장 닉네임: " + response.body().getNickname());
                 textViewConts.append("\n- 분야: " + val[1].replaceAll("\\[", "") + "\n- 지역: " + val[0].replaceAll("\\[", ""));
                 textViewConts.append("\n- 현재인원: " + response.body().getContnum() + "\n- 제한인원: " + response.body().getLimitnum());
-                textViewConts.append("\n- 상세내용: " + response.body().getDetail());
+                textViewConts.append("\n- 상세내용: " + response.body().getDetail());*/
             }
 
             @Override

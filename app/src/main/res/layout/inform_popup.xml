@@ -17,6 +17,8 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.03"
         android:gravity="center"
+        android:background="@drawable/border"
+        android:textStyle="bold"
         android:textColor="#000000"
         android:textSize="20dp" />
 
@@ -24,7 +26,6 @@
         android:id="@+id/textView_inform_contents"
         android:layout_width="230dp"
         android:layout_height="292dp"
-        android:background="@drawable/popup_round"
         android:gravity="left"
         android:padding="10dp" />
 

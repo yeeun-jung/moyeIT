@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#a5e872"
+    android:background="#a3d180"
     android:descendantFocusability="beforeDescendants"
     android:fitsSystemWindows="true"
     android:focusableInTouchMode="true"
@@ -64,7 +64,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/round_style"
-        android:text="LOGIN" />
+        android:textStyle="bold"
+        android:text="로그인" />
 
     <TextView
         android:layout_width="match_parent"

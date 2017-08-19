@@ -2,6 +2,7 @@ package com.example.moyeit.moyeitapp.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
@@ -67,10 +68,10 @@ public class StudyDetailActivity extends AppCompatActivity {
             public void onResponse(Call<StudyDetailDto> call, Response<StudyDetailDto> response) {
                 String[] val = response.body().getTitle().toString().trim().split("]");
                 studyTitle.setText(val[2]);
-                textView.setText("- 방장 닉네임: " + response.body().getNickname());
-                textView.append("\n- 분야: " + val[1].replaceAll("\\[", "") + "\n- 지역: " + val[0].replaceAll("\\[", ""));
-                textView.append("\n- 현재인원: " + response.body().getContnum() + "\n- 제한인원: " + response.body().getLimitnum());
-                textView.append("\n- 상세내용: " + response.body().getDetail());
+                textView.setText("◙ 방장 닉네임: " + response.body().getNickname() +"\n");
+                textView.append("\n◙ 분야: " + val[1].replaceAll("\\[", "") + "\n\n◙ 지역: " + val[0].replaceAll("\\[", "")+"\n");
+                textView.append("\n◙ 현재인원: " + response.body().getContnum() + "\n\n◙ 제한인원: " + response.body().getLimitnum()+"\n");
+                textView.append("\n◙ 상세내용: \n" + response.body().getDetail());
                 if (response.body().getState().toString().equals("already")) {
                     joinBtn.setEnabled(false);
                     joinBtn.setText("이미 승인 요청하였습니다.");
@@ -109,11 +110,6 @@ public class StudyDetailActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeAsUpIndicator(R.mipmap.noun_back);
 
-    }
-
-    @Override
-    public void onBackPressed() {
-        backButtonExit.onBackPressed();
     }
 
     @Override

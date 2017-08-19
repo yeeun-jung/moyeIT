@@ -46,6 +46,7 @@ public class MoimDetailActivity extends AppCompatActivity {
     private TextView textCdate;
     private ListView textComment;
     private EditText editComment;
+    private TextView textcommentcount;
     private String sid;
     private String no;
     private String mid;
@@ -59,6 +60,7 @@ public class MoimDetailActivity extends AppCompatActivity {
     private int limitnum;
     private String nickname;
     private String commentvalue;
+    private int height;
     ArrayList<HashMap<String, String>> arrayList = new ArrayList<HashMap<String, String>>();
     HashMap<String, String> item;
     SimpleAdapter Adapter;
@@ -74,6 +76,7 @@ public class MoimDetailActivity extends AppCompatActivity {
         textMuser = (TextView) findViewById(R.id.text_user);
         textDetail = (TextView) findViewById(R.id.text_detail);
         textCdate = (TextView) findViewById(R.id.text_date);
+        textcommentcount = (TextView) findViewById(R.id.text_commentcount);
         textComment = (ListView) findViewById(R.id.text_comment);
         editComment = (EditText) findViewById(R.id.edit_comment);
         btnagree = (Button) findViewById(R.id.btn_agree);
@@ -118,6 +121,8 @@ public class MoimDetailActivity extends AppCompatActivity {
                 }
                 textComment.setAdapter(Adapter);
                 listViewHeightSet(Adapter, textComment); //이 곳에서 리스트뷰 높이 설정
+                height = Adapter.getCount();
+                textcommentcount.setText("댓글 (" + Integer.toString(height) + ")");
                 textMuser.setText(response.body().getMuser());
                 int num = limitnum / 2;
                 votenum = agrnum + disnum;
