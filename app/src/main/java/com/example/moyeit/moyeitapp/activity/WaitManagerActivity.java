@@ -191,9 +191,9 @@ class WaitManagerAdapter extends BaseAdapter {
         TextView date = (TextView) convertView.findViewById(R.id.wm_date);
         date.setText(src.get(position).getDate());
         TextView agree = (TextView) convertView.findViewById(R.id.wm_agree);
-        if(src.get(position).getAgree() == ""){
+        if(src.get(position).getAgree().equals("")){
             agree.setText("대기중");
-        }else if(src.get(position).getAgree() == "true") {
+        }else if((src.get(position).getAgree().equals("true"))) {
             agree.setText("수락");
         }else{
             agree.setText("거절");
