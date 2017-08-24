@@ -15,11 +15,6 @@ public class MyStudyDto {
     int contnum;
     int sid;
 
-
-    public MyStudyDto() {
-
-    }
-
     public void setTitle(String title) {
         this.title = title;
     }
@@ -36,15 +31,11 @@ public class MyStudyDto {
         this.contnum = contnum;
     }
 
-
     public void setSid(int sid) {
         this.sid = sid;
     }
 
-    public String getTitle() {
-
-        return title;
-    }
+    public String getTitle() {     return title;    }
 
     public String getNickname() {
         return nickname;
@@ -53,7 +44,6 @@ public class MyStudyDto {
     public int getLimitnum() {
         return limitnum;
     }
-
 
     public int getContnum() {
         return contnum;

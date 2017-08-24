@@ -99,8 +99,6 @@ public class MsDetailActivity extends AppCompatActivity {
         moyeService = moyeClient.getMoyeITService();
 
         detail_title = (TextView) findViewById(R.id.detail_title);
-      //  detail_nickname = (TextView) findViewById(R.id.detail_nickname);
-       // detail_conlimitnum = (TextView) findViewById(R.id.detail_conlimitnum);
         detail_list = (ListView) findViewById(R.id.detail_list);
         board_list = (ListView) findViewById(R.id.board_list);
         study=new StudyDetailDto();
@@ -136,10 +134,8 @@ public class MsDetailActivity extends AppCompatActivity {
             public void onTabChanged(String tabId) {
                 for(int i =0; i<tabHost.getTabWidget().getChildCount(); i++){
                     tabHost.getTabWidget().getChildAt(i).setBackgroundColor(Color.parseColor("#ededed"));
-
                 }
                 tabHost.getTabWidget().getChildAt(tabHost.getCurrentTab()).setBackgroundColor(Color.parseColor("#F2CB61"));
-
             }
         });
 
@@ -238,24 +234,11 @@ public class MsDetailActivity extends AppCompatActivity {
                 Intent intent=new Intent(this,InformPopupActivity.class);
                 intent.putExtra("sid",Integer.toString(sid));
                 startActivity(intent);
-               // startActivity(new Intent(this, InformPopupActivity.class));
                 break;
             }
         }
         return super.onOptionsItemSelected(item);
     }
-
-
-  /*
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
-        if(id==R.id.menu_inform){
-          //  startActivity(new Intent(this, InformPopupActivity.class));
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }*/
 
 
 }

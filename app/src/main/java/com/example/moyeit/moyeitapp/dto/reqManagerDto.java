@@ -14,10 +14,8 @@ public class reqManagerDto {
         return state;
     }
 
-
     public ArrayList<reqManagerDtlDto> getList() {
         return list;
     }
-
 
 }

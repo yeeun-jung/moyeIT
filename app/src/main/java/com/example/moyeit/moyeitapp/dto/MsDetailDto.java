@@ -54,8 +54,6 @@ public class MsDetailDto {
         this.contnum = contnum;
     }
 
-
-
     public ArrayList<MsDetailListDto> getList() {
         return list;
     }
