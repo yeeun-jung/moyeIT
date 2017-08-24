@@ -57,6 +57,7 @@ public class MsMainActivity extends AppCompatActivity
     ListViewAdapter adapter;
     UserDto userDto;
     String sid;
+    BackButtonExit backButtonExit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +68,7 @@ public class MsMainActivity extends AppCompatActivity
         moyeService = moyeClient.getMoyeITService();
 
         mstudyList = (ListView)findViewById(R.id.u_list);
+        backButtonExit = new BackButtonExit(this);
 
         Call<ListDto> myStudyList = moyeService.myStudyList(userDto.getPid());
         myStudyList.enqueue(new Callback<ListDto>() {
@@ -119,7 +121,7 @@ public class MsMainActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            backButtonExit.onBackPressed();
         }
     }
 
