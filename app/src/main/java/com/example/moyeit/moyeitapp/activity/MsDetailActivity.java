@@ -29,8 +29,10 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
 import android.widget.TabWidget;
@@ -122,6 +124,11 @@ public class MsDetailActivity extends AppCompatActivity {
 
         tabHost.setCurrentTab(0);
         tabHost.getTabWidget().getChildAt(0).setBackgroundColor(Color.parseColor("#F2CB61"));
+        TextView tv_1 = (TextView) tabHost.getTabWidget().getChildAt(0).findViewById(android.R.id.title);
+        tv_1.setTextSize(14);
+        TextView tv_2 = (TextView) tabHost.getTabWidget().getChildAt(1).findViewById(android.R.id.title);
+        tv_2.setTextSize(14);
+
 
 
         tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
@@ -132,6 +139,7 @@ public class MsDetailActivity extends AppCompatActivity {
 
                 }
                 tabHost.getTabWidget().getChildAt(tabHost.getCurrentTab()).setBackgroundColor(Color.parseColor("#F2CB61"));
+
             }
         });
 

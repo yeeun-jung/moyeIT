@@ -10,27 +10,38 @@
     android:orientation="vertical"
     android:background="@android:color/transparent">
 
-    <ImageView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="6"
-        android:layout_gravity="center"
-        android:src="@mipmap/book"/>
+        android:layout_weight="2"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:layout_gravity="center"
+            android:src="@mipmap/popup_user"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="bottom"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:id="@+id/rmp_name"/>
+    </LinearLayout>
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:textSize="20dp"
-        android:id="@+id/rmp_name"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_weight="4"
+        android:layout_weight="6.5"
         android:layout_height="0dp"
         android:padding="11dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/popup_text"
         android:textColor="@color/colorLigntBlack"
         android:id="@+id/rmp_content"/>
 
@@ -42,7 +53,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1.5"
+        android:layout_weight="1.1"
         >
         <Button
             android:layout_width="0dp"
