@@ -60,7 +60,6 @@ public class SrListActivity extends AppCompatActivity
     String join;
     String[] searchval;
     Call < SrListDto > srList;
-    private BackButtonExit backButtonExit;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -74,8 +73,6 @@ public class SrListActivity extends AppCompatActivity
         list = (ListView) findViewById(R.id.s_srList);
         searchText = (EditText) findViewById(R.id.s_searchText);
         searchBtn = (Button) findViewById(R.id.s_searchBtn);
-
-        backButtonExit = new BackButtonExit(this);
 
         userDto = UserDto.getInstance();
         final String pid = String.valueOf(userDto.getPid());
@@ -188,13 +185,12 @@ public class SrListActivity extends AppCompatActivity
     }
     @Override
     public void onBackPressed() {
-//        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout1);
-//        if (drawer.isDrawerOpen(GravityCompat.START)) {
-//            drawer.closeDrawer(GravityCompat.START);
-//        } else {
-//            super.onBackPressed();
-//        }
-        backButtonExit.onBackPressed();
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout1);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
     }
     /*
         @Override

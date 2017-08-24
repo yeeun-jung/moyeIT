@@ -34,7 +34,6 @@ public class RankingMainActivity extends AppCompatActivity {
     ImageView image1, image2, image3;
     TextView rankingTitle1, rankingTitle2, rankingTitle3;
     TextView nickname1, nickname2, nickname3;
-    private BackButtonExit backButtonExit;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,8 +52,6 @@ public class RankingMainActivity extends AppCompatActivity {
         nickname2 = (TextView)findViewById(R.id.nickname2);
         nickname3 = (TextView)findViewById(R.id.nickname3);
 
-        backButtonExit = new BackButtonExit(this);
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_ranking);
         setSupportActionBar(toolbar);
         ActionBar actionBar =getSupportActionBar();
@@ -70,10 +67,5 @@ public class RankingMainActivity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onBackPressed() {
-        backButtonExit.onBackPressed();
     }
 }

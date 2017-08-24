@@ -66,7 +66,6 @@ public class MsDetailActivity extends AppCompatActivity {
     private Button btnClosePopup;
     private Button btnCreatePopup;
     private PopupWindow pwindo;
-    private BackButtonExit backButtonExit;
     private int mWidthPixels, mHeightPixels;
     TextView detail_title;
     TextView detail_nickname;
@@ -98,7 +97,6 @@ public class MsDetailActivity extends AppCompatActivity {
 
         moyeClient = new MoyeITServerClient(getApplicationContext());
         moyeService = moyeClient.getMoyeITService();
-        backButtonExit = new BackButtonExit(this);
 
         detail_title = (TextView) findViewById(R.id.detail_title);
       //  detail_nickname = (TextView) findViewById(R.id.detail_nickname);
@@ -223,12 +221,6 @@ public class MsDetailActivity extends AppCompatActivity {
         });
 
     }
-
-    @Override
-    public void onBackPressed() {
-        backButtonExit.onBackPressed();
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -267,7 +259,6 @@ public class MsDetailActivity extends AppCompatActivity {
 
 
 }
-
 
 
 class msDetailListViewAdapter extends BaseAdapter {

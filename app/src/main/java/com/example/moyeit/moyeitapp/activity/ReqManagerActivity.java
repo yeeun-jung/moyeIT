@@ -53,7 +53,8 @@ public class ReqManagerActivity extends AppCompatActivity
     ArrayList<reqManagerDtlDto> dtl_list;
     ReqManagerAdapter adapter;
     ListView list;
-    private BackButtonExit backButtonExit;
+    BackButtonExit backButtonExit;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -63,11 +64,12 @@ public class ReqManagerActivity extends AppCompatActivity
         moyeClient = new MoyeITServerClient(getApplicationContext());
         moyeService = moyeClient.getMoyeITService();
 
+        backButtonExit = new BackButtonExit(this);
         userDto = UserDto.getInstance();
         final String pid = String.valueOf(userDto.getPid());
 
         list = (ListView)findViewById(R.id.rm_list);
-        backButtonExit = new BackButtonExit(this);
+
 
         r_list = moyeService.reqMList(Integer.parseInt(pid), "", "");
         r_list.enqueue(new Callback<reqManagerDto>() {
@@ -105,16 +107,15 @@ public class ReqManagerActivity extends AppCompatActivity
         textEmail.setText(userDto.getEmail());
     }
 
-
     @Override
     public void onBackPressed() {
-        backButtonExit.onBackPressed();
 //        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout2);
 //        if (drawer.isDrawerOpen(GravityCompat.START)) {
 //            drawer.closeDrawer(GravityCompat.START);
 //        } else {
 //            super.onBackPressed();
 //        }
+        backButtonExit.onBackPressed();
     }
 
     @SuppressWarnings("StatementWithEmptyBody")

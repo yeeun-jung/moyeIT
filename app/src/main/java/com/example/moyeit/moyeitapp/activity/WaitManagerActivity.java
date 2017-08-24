@@ -49,7 +49,6 @@ public class WaitManagerActivity extends AppCompatActivity
     WaitManagerAdapter adapter;
     ListView list;
     int pid;
-    private BackButtonExit backButtonExit;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -63,7 +62,7 @@ public class WaitManagerActivity extends AppCompatActivity
         final String pid = String.valueOf(userDto.getPid());
 
         list = (ListView) findViewById(R.id.wm_list);
-        backButtonExit = new BackButtonExit(this);
+
         Intent intent = getIntent();
 
         w_list = moyeService.waitMList(Integer.parseInt(pid));
@@ -102,13 +101,12 @@ public class WaitManagerActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-//        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout3);
-//        if (drawer.isDrawerOpen(GravityCompat.START)) {
-//            drawer.closeDrawer(GravityCompat.START);
-//        } else {
-//            super.onBackPressed();
-//        }
-        backButtonExit.onBackPressed();
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout3);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
     }
 
     @SuppressWarnings("StatementWithEmptyBody")

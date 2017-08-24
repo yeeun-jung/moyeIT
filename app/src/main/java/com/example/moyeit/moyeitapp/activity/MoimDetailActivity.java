@@ -67,7 +67,6 @@ public class MoimDetailActivity extends AppCompatActivity {
     public UserDto userDto;
     public MoyeITServerClient moyeClient;
     public MoyeITServerService moyeService;
-    private BackButtonExit backButtonExit;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,7 +82,6 @@ public class MoimDetailActivity extends AppCompatActivity {
         btnagree = (Button) findViewById(R.id.btn_agree);
         btndisagree = (Button) findViewById(R.id.btn_disagree);
         btnaddcomment = (Button) findViewById(R.id.btn_addcomment);
-        backButtonExit = new BackButtonExit(this);
         Adapter = new SimpleAdapter(
                 this, arrayList, android.R.layout.simple_list_item_2,
                 new String[]{"item 1", "item 2"},
@@ -244,11 +242,6 @@ public class MoimDetailActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeAsUpIndicator(R.mipmap.noun_back);
-    }
-
-    @Override
-    public void onBackPressed() {
-        backButtonExit.onBackPressed();
     }
 
     @Override
