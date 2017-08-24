@@ -26,7 +26,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:baselineAlignBottom="false"
-                android:src="@mipmap/ic_addbrd" />
+                android:src="@mipmap/ic_intro" />
 
         </android.support.v7.widget.Toolbar>
 
@@ -72,6 +72,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="보내기" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
         </LinearLayout>
     </RelativeLayout>
 </android.support.design.widget.CoordinatorLayout>

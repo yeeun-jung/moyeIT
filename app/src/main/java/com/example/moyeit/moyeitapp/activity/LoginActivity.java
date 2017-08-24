@@ -78,10 +78,8 @@ public class LoginActivity extends AppCompatActivity {
                     callUserInfo.enqueue(new Callback<UserDto>() {
                         @Override
                         public void onResponse(Call<UserDto> call, Response<UserDto> response) {
-
                             if (response.body().getEmail().equals("")) {
                                 Toast.makeText(LoginActivity.this, "없는 계정입니다.", Toast.LENGTH_SHORT).show();
-
                             } else if (response.body().getPwd().equals(editPwdValue)) {
                                 userDto.setEmail(response.body().getEmail());
                                 userDto.setEnjoy(response.body().getEnjoy());
@@ -91,7 +89,6 @@ public class LoginActivity extends AppCompatActivity {
                                 TOKEN=true;
                                 Toast.makeText(LoginActivity.this, response.body().getNickname() + "님, 안녕하세요.", Toast.LENGTH_SHORT).show();
                                 login(TOKEN);
-
                             } else if (!response.body().getPwd().equals(editPwdValue)) {
                                 Toast.makeText(LoginActivity.this, "아이디와 비밀번호를 확인해주세요.", Toast.LENGTH_SHORT).show();
                                 userDto.setRegion(0);
@@ -100,9 +97,6 @@ public class LoginActivity extends AppCompatActivity {
                                 userDto.setEmail("");
                                 userDto.setNickname("");
                             }
-
-
-
                         }
 
 

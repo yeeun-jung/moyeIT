@@ -87,9 +87,8 @@ public interface MoyeITServerService {
     Call<JoinDto> sendintro(@Field("content") String content, @Field("pid") Integer pid, @Field("sid") Integer sid);
 
     //FCM
- //   @FormUrlEncoded
     @GET("fcm/register.php")
-    Call<UserDto>sendFCM (@Query("token") String token, @Query("pid") int pid);
+    Call<UserDto> sendFCM (@Query("token") String token, @Query("pid") int pid);
 
     @GET("request/staff.php")
     Call<waitManagerDto> waitMList(@Query("pid") int id);

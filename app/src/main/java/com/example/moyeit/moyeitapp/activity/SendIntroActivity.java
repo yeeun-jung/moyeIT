@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.moyeit.moyeitapp.Network.MoyeITServerClient;
@@ -29,6 +30,7 @@ import retrofit2.Response;
 
 public class SendIntroActivity extends AppCompatActivity {
     private EditText introduction;
+    private TextView inform;
     public String introvalue;
     public int sidvalue;
     public int pidvalue;
@@ -41,6 +43,7 @@ public class SendIntroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.send_introduction);
 
+        inform = (TextView) findViewById(R.id.textView6);
         introduction = (EditText) findViewById(R.id.edit_introduction);
         sendBtn = (Button) findViewById(R.id.btn_sendintro);
         userDto=UserDto.getInstance();
@@ -67,13 +70,13 @@ public class SendIntroActivity extends AppCompatActivity {
                     callSendIntro.enqueue(new Callback<JoinDto>() {
                         @Override
                         public void onResponse(Call<JoinDto> call, Response<JoinDto> response) {
-                            Intent intent = new Intent(getApplicationContext(), MsMainActivity.class);
-                            //요청자페이지로 이동
+                            inform.setText(response.body().getState());
+                            Intent intent = new Intent(getApplicationContext(), WaitManagerActivity.class);
                             startActivity(intent);
                         }
                         @Override
                         public void onFailure(Call<JoinDto> call, Throwable t) {
-                            Log.i("실패", "실패");
+                            Log.i("실패여기", "실패여기");
                         }
                     });
                 } }

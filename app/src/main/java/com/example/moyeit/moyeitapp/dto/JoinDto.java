@@ -8,6 +8,7 @@ public class JoinDto {
     private int pid;
     private int sid;
     private String content;
+    private String state;
 
     public int getPid() {
         return pid;
@@ -31,5 +32,13 @@ public class JoinDto {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 }

@@ -24,7 +24,6 @@ public class MoyeITServerClient implements MoyeITClient{
     }
 
     public void init(){
-
         BASE_URL = "http://13.124.67.227:80/moyeit/";
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
@@ -32,11 +31,10 @@ public class MoyeITServerClient implements MoyeITClient{
                 .build();
 
         apiService = retrofit.create(MoyeITServerService.class);
-
     }
-
     @Override
     public MoyeITServerService getMoyeITService() {
         return apiService;
     }
+
 }
