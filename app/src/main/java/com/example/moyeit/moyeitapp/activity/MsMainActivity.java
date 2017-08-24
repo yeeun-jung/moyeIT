@@ -57,6 +57,7 @@ public class MsMainActivity extends AppCompatActivity
     ListViewAdapter adapter;
     UserDto userDto;
     String sid;
+    private BackButtonExit backButtonExit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +66,8 @@ public class MsMainActivity extends AppCompatActivity
         userDto=UserDto.getInstance();
         moyeClient = new MoyeITServerClient(getApplicationContext());
         moyeService = moyeClient.getMoyeITService();
+
+        backButtonExit = new BackButtonExit(this);
 
         mstudyList = (ListView)findViewById(R.id.u_list);
 
@@ -115,12 +118,13 @@ public class MsMainActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
+//        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+//        if (drawer.isDrawerOpen(GravityCompat.START)) {
+//            drawer.closeDrawer(GravityCompat.START);
+//        } else {
+//            super.onBackPressed();
+//        }
+        backButtonExit.onBackPressed();
     }
 
 /*

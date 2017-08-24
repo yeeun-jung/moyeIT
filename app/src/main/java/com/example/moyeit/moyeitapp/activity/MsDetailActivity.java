@@ -66,6 +66,7 @@ public class MsDetailActivity extends AppCompatActivity {
     private Button btnClosePopup;
     private Button btnCreatePopup;
     private PopupWindow pwindo;
+    private BackButtonExit backButtonExit;
     private int mWidthPixels, mHeightPixels;
     TextView detail_title;
     TextView detail_nickname;
@@ -97,6 +98,7 @@ public class MsDetailActivity extends AppCompatActivity {
 
         moyeClient = new MoyeITServerClient(getApplicationContext());
         moyeService = moyeClient.getMoyeITService();
+        backButtonExit = new BackButtonExit(this);
 
         detail_title = (TextView) findViewById(R.id.detail_title);
       //  detail_nickname = (TextView) findViewById(R.id.detail_nickname);
@@ -202,7 +204,6 @@ public class MsDetailActivity extends AppCompatActivity {
                 TextView no_Text = (TextView) view.findViewById(R.id.ms_detail_no);
                 no = no_Text.getText().toString();
                 Intent intent = new Intent(getApplicationContext(), MoimDetailActivity.class);
-                // 연주가 만든 액티비티 이름으로 바꾸고 돌리기(테스트는 끝남 no랑 sid 넘겨주는 테스트는 끝남)
                 intent.putExtra("sid", String.valueOf(sid));
                 intent.putExtra("no", no);
                 startActivity(intent);
@@ -215,7 +216,6 @@ public class MsDetailActivity extends AppCompatActivity {
                 TextView bid_Text = (TextView) view.findViewById(R.id.bd_detail_bid);
                 bid = bid_Text.getText().toString();
                 Intent intent = new Intent(getApplicationContext(), BrdDetailActivity.class);
-                // 연주가 만든 액티비티 이름으로 바꾸고 돌리기(테스트는 끝남 bid 넘겨주는 테스트는 끝남)
                 intent.putExtra("sid", String.valueOf(sid));
                 intent.putExtra("bid", bid);
                 startActivity(intent);
@@ -223,6 +223,12 @@ public class MsDetailActivity extends AppCompatActivity {
         });
 
     }
+
+    @Override
+    public void onBackPressed() {
+        backButtonExit.onBackPressed();
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -261,6 +267,7 @@ public class MsDetailActivity extends AppCompatActivity {
 
 
 }
+
 
 
 class msDetailListViewAdapter extends BaseAdapter {

@@ -113,6 +113,11 @@ public class StudyDetailActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onBackPressed() {
+        backButtonExit.onBackPressed();
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:

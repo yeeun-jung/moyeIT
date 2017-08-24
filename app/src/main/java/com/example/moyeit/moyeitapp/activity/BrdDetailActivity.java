@@ -38,6 +38,7 @@ public class BrdDetailActivity extends AppCompatActivity {
     public UserDto userDto;
     public MoyeITServerClient moyeClient;
     public MoyeITServerService moyeService;
+    private BackButtonExit backButtonExit;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +48,7 @@ public class BrdDetailActivity extends AppCompatActivity {
         textMuser = (TextView) findViewById(R.id.text_brddetailnick);
         textDetail = (TextView) findViewById(R.id.text_brddetailcontent);
         textCdate = (TextView) findViewById(R.id.text_brddetaildate);
+        backButtonExit = new BackButtonExit(this);
         moyeClient = new MoyeITServerClient(getApplicationContext());
         moyeService = moyeClient.getMoyeITService();
         userDto= UserDto.getInstance();
@@ -78,6 +80,11 @@ public class BrdDetailActivity extends AppCompatActivity {
         ActionBar actionBar =getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeAsUpIndicator(R.mipmap.noun_back);
+    }
+
+    @Override
+    public void onBackPressed() {
+        backButtonExit.onBackPressed();
     }
 
     @Override
